@@ -23,5 +23,11 @@ simbolos_matematicos = {
     'resta':'-',
     'multiplicacion':'*',
     'division':'/',
-    
+    'division exacta': '//'
+    'modulo',
+
+}
+
+comentario = {
+    'slash':'#'
 }
