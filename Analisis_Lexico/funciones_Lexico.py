@@ -2,7 +2,7 @@ import re #importando la libreria de REGEX.
 from separadores_Lexico import *  #Importando la clase en donde se encuentran los simbolos separadores.
 
 
-"""FUNCIONES DE SEPARACION PARA SIGNOS IMPORTANTES DE PUNTUACION"""
+""" [ FUNCIONES DE SEPARACION PARA SIGNOS IMPORTANTES DE PUNTUACION ] """
 
 def separar_por_coma(linea):  #Funcion que proporciona una separacion por comas
     
@@ -22,9 +22,9 @@ def separar_por_puntoComa(linea):
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 
-"""FUNCIONES DE SEPARACION PARA SIGNOS DE AGRUPACION"""
+"""  [ FUNCIONES DE SEPARACION PARA SIGNOS DE AGRUPACION  ]"""
 
-string = ']hola'
+string = '}hola'
 
 def separar_por_parentesis_abierto(linea):
     
@@ -49,6 +49,19 @@ def separar_por_corchete_cerrado(linea):
     contenedor = re.split('(\])',linea)
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
+
+def separar_por_llave_abierta(linea):
+
+    contenedor = re.split('(\{)',linea)
+    nuevo_string = ' '.join(contenedor)
+    return nuevo_string
+
+def separar_por_llave_cerrada(linea):
+
+    contenedor = re.split('(\})',linea)
+    nuevo_string = ' '.join(contenedor)
+    return nuevo_string
+
 
 
 
