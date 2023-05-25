@@ -1,7 +1,8 @@
 signos_puntuacion = {
     'coma':',',
     'punto':'.',
-    'punto y coma':';'
+    'punto y coma':';',
+    'espacio':' '
 }
 
 signos_agrupacion = {
@@ -23,8 +24,11 @@ simbolos_matematicos = {
     'resta':'-',
     'multiplicacion':'*',
     'division':'/',
-    'division exacta': '//'
-    'modulo',
+    'division exacta': '//',
+    'modulo':'%',
+    'mayor': '>',
+    'menor': '<',
+    'igual': '=',
 
 }
 
