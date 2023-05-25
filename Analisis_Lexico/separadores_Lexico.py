@@ -1,6 +1,5 @@
 signos_puntuacion = {
     'coma':',',
-    'punto':'.',
     'punto y coma':';',
     'espacio':' '
 }
@@ -34,4 +33,14 @@ simbolos_matematicos = {
 
 comentario = {
     'slash':'#'
+}
+
+palabras_reservadas = {
+    'cadena':'string',
+    'entero':'int',
+    'caracter':'char',
+    'flotante':'float',
+    'condicional':'if',
+    'ciclo_for':'for',
+    'ciclo_while':'while'
 }
