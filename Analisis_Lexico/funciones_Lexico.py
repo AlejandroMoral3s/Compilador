@@ -78,19 +78,19 @@ def separar_por_apostrofe(linea):
 
 def separar_por_suma(linea):
 
-    contenedor = re.split('(+)',linea)
+    contenedor = re.split('(\+)',linea)
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 
 def separar_por_resta(linea):
 
-    contenedor = re.split('(-)',linea)
+    contenedor = re.split('(\-)',linea)
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 
 def separar_por_multiplicacion(linea):
 
-    contenedor = re.split('(*)',linea)
+    contenedor = re.split('(\*)',linea)
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 

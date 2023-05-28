@@ -1,8 +1,11 @@
+
+# Declarando diccionario para identificar signos de puntuacion
 signos_puntuacion = {
     ',':'coma',
     ';':'punto y coma',
 }
 
+# Declarando diccionario para identificar signos de agrupacion
 signos_agrupacion = {
     '(': 'parentesis abierto',
     ')': 'parentesis cerrado',
@@ -12,11 +15,13 @@ signos_agrupacion = {
     '}': 'llave cerrada'
 }
 
+# Declarando diccionario para identificar cadenas y caracteres
 cadenas_y_caracteres = {
     '\"':'comillas',
     '\'':'apostrofe'
 }
 
+# Declarando diccionario para identificar simbolos matematicos
 simbolos_matematicos = {
     '+':'suma',
     '-':'resta',
@@ -30,10 +35,12 @@ simbolos_matematicos = {
 
 }
 
+# Declarando diccionario para identificar comentarios
 comentario = {
     '#':'slash'
 }
 
+# Declarando diccionario para identificar palabras_reservadas
 palabras_reservadas = {
     'str':'cadena',
     'int':'entero',
