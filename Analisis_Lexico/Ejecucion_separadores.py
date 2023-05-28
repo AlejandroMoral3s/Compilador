@@ -1,5 +1,5 @@
-from funciones_Lexico import *
-from separadores_Lexico import *
+from Funciones_separadoras import *
+from Diccionario import *
 
 lista_separacion = []
 string_extraido = ''

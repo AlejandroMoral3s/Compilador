@@ -1,5 +1,5 @@
 import re #importando la libreria de REGEX.
-from separadores_Lexico import *  #Importando la clase en donde se encuentran los simbolos separadores.
+from Diccionario import *  #Importando la clase en donde se encuentran los simbolos separadores.
 
 
 """ [ FUNCIONES DE SEPARACION PARA SIGNOS IMPORTANTES DE PUNTUACION ] """

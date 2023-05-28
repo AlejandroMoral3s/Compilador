@@ -1,8 +1,8 @@
-from Analisis_Lexico import separadores_Lexico
+from Analisis_Lexico import Diccionario
 
 
 def extract_lines():
     with open('ReceptorLineas.txt', 'r') as f:
         read_data = f.read()
 
-print(separadores_Lexico.cadenas_y_caracteres['comillas'])
+print(Diccionario.cadenas_y_caracteres['comillas'])
