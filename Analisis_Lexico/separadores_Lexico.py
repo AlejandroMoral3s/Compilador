@@ -1,46 +1,45 @@
 signos_puntuacion = {
-    'coma':',',
-    'punto y coma':';',
-    'espacio':' '
+    ',':'coma',
+    ';':'punto y coma',
 }
 
 signos_agrupacion = {
-    'parentesis abierto': '(',
-    'parentesis cerrado': ')',
-    'corchete abierto': '[',
-    'corchete cerrado': ']',
-    'llave abierta': '{',
-    'llave cerrada': '}'
+    '(': 'parentesis abierto',
+    ')': 'parentesis cerrado',
+    '[': 'corchete abierto',
+    ']': 'corchete cerrado',
+    '{': 'llave abierta',
+    '}': 'llave cerrada'
 }
 
 cadenas_y_caracteres = {
-    'comillas':'\"',
-    'apostrofe':'\''
+    '\"':'comillas',
+    '\'':'apostrofe'
 }
 
 simbolos_matematicos = {
-    'suma':'+',
-    'resta':'-',
-    'multiplicacion':'*',
-    'division':'/',
-    'division exacta': '//',
-    'modulo':'%',
-    'mayor': '>',
-    'menor': '<',
-    'igual': '=',
+    '+':'suma',
+    '-':'resta',
+    '*':'multiplicacion',
+    '/':'division',
+    '//': 'division exacta',
+    '%':'modulo',
+    '>': 'mayor',
+    '<': 'menor',
+    '=': 'igual',
 
 }
 
 comentario = {
-    'slash':'#'
+    '#':'slash'
 }
 
 palabras_reservadas = {
-    'cadena':'string',
-    'entero':'int',
-    'caracter':'char',
-    'flotante':'float',
-    'condicional':'if',
-    'ciclo_for':'for',
-    'ciclo_while':'while'
+    'str':'cadena',
+    'int':'entero',
+    'char':'caracter',
+    'float':'flotante',
+    'if':'condicional',
+    'for':'inicio_for',
+    'while':'inicio_while'
 }
