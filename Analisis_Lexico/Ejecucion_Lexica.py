@@ -80,7 +80,4 @@ def extraer_string_separado(linea):
     return string_volatil # Se devuelve el nuevo valor como un string de los caracteres ya separados
 
 
-
-print(extraer_string_separado(''))
-
     
