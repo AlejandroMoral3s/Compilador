@@ -1,4 +1,3 @@
-
 # Declarando diccionario para identificar signos de puntuacion
 signos_puntuacion = {
     ',':'coma',
