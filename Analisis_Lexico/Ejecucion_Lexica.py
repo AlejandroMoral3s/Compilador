@@ -1,10 +1,11 @@
 from Funciones_separadoras import *
-from Diccionario import *
 
-lista_separacion = []
-string_extraido = ''
 
-def extraer_string_separado(linea):
+linea_de_texto = '    int hola = 1;'
+
+
+#Esta funcion devuelve un STRING con todos los caracteres separados por un ESPACIO
+def extraer_string_separado(linea): 
 
     es_division_exacta = False
 
@@ -77,7 +78,21 @@ def extraer_string_separado(linea):
 
     string_volatil = separar_por_while(string_volatil)
 
+    string_volatil = separar_por_espacio(string_volatil)
+
     return string_volatil # Se devuelve el nuevo valor como un string de los caracteres ya separados
 
+#Esta funcion devuelve una LISTA con todas las separaciones hechas por la funcion anterior
+def convertir_string_a_lista(linea):
+    
+    lista_separada = linea.split()
+    return lista_separada
 
+
+string_extraido = extraer_string_separado(linea_de_texto)
+
+lista = convertir_string_a_lista(string_extraido)
+
+print(string_extraido)
+print(lista)
     

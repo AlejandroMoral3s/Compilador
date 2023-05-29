@@ -1,6 +1,4 @@
 import re #importando la libreria de REGEX.
-from Diccionario import *  #Importando la clase en donde se encuentran los simbolos separadores.
-
 
 """ [ FUNCIONES DE SEPARACION PARA SIGNOS IMPORTANTES DE PUNTUACION ] """
 
@@ -139,8 +137,6 @@ def separar_por_slash(linea):
     return nuevo_string
 
 """  [ FUNCIONES DE SEPARACION PARA PALABRAS RESERVADAS  ]"""
-
-string = "string hola"
 
 def separar_por_str(linea):
 
