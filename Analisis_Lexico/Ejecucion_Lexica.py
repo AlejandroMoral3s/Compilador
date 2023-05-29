@@ -1,5 +1,6 @@
 from Funciones_separadoras import *
 from Diccionario import *
+from Identificacion_Lexica import *
 
 linea_de_texto = 'hola{,;}'
 
@@ -109,8 +110,8 @@ def identificar_tokens_lexicos(lista_ingresada):
             if (y == x):
                 lista_volatil.append(diccionario_general[y])
                 coindicencia = True
-
-        if (coindicencia==False):
+            
+        if(coindicencia==False):
             lista_volatil.append("ERROR")
 
         coindicencia = False
