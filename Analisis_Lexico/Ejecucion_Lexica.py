@@ -92,7 +92,7 @@ def identificar_tokens_lexicos(lista_ingresada):
     diccionario = diccionario_general.keys()
 
     #creando una variable booleana con valor iniciar FALSE
-    coindicencia = False
+    coincidencia = False
 
     """El primer ciclo evalua cada uno de los elementos de la lista separada previamente por
     CONVERTIR_STRING_A_LISTA, el seugndo ciclo evalua cada uno de los elementos que se tienen en 
@@ -109,12 +109,16 @@ def identificar_tokens_lexicos(lista_ingresada):
         for y in diccionario:
             if (y == x):
                 lista_volatil.append(diccionario_general[y])
-                coindicencia = True
+                coincidencia = True
+            #En desarrollo aun
+            elif(identificar_ids(x)==True):
+                lista_volatil.append('Identificador')
+                coincidencia = True
             
-        if(coindicencia==False):
+        if(coincidencia==False):
             lista_volatil.append("ERROR")
 
-        coindicencia = False
+        coincidencia = False
 
     return lista_volatil
 
