@@ -103,6 +103,7 @@ def identificar_tokens_lexicos(lista_ingresada):
     ninguna coincidencia dentro de las llaves del diccionario), de ser asi, agrega un texto de error
     a la lista de identificadores. Por ultimo se hace que la variable vuelva a su estado original,
     para que el proceso pueda repetirse nuevamente."""
+ 
     for x in lista_ingresada:
         for y in diccionario:
             if (y == x):
@@ -113,8 +114,6 @@ def identificar_tokens_lexicos(lista_ingresada):
             lista_volatil.append("ERROR")
 
         coindicencia = False
-
-        
 
     return lista_volatil
 
