@@ -136,49 +136,7 @@ def separar_por_slash(linea):
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 
-"""  [ FUNCIONES DE SEPARACION PARA PALABRAS RESERVADAS  ]"""
 
-def separar_por_str(linea):
-
-    contenedor = re.split('(str)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_int(linea):
-
-    contenedor = re.split('(int)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_char(linea):
-
-    contenedor = re.split('(char)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_float(linea):
-
-    contenedor = re.split('(float)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_if(linea):
-
-    contenedor = re.split('(if)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_for(linea):
-
-    contenedor = re.split('(for)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
-
-def separar_por_while(linea):
-
-    contenedor = re.split('(while)',linea)
-    nuevo_string = ' '.join(contenedor)
-    return nuevo_string
 
 
 

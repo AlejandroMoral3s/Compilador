@@ -1,7 +1,7 @@
 from Funciones_separadoras import *
 
 
-linea_de_texto = '    int hola = 1;'
+linea_de_texto = 'inthola = 1;'
 
 
 #Esta funcion devuelve un STRING con todos los caracteres separados por un ESPACIO
@@ -63,20 +63,6 @@ def extraer_string_separado(linea):
     string_volatil = separar_por_igual(string_volatil)
 
     string_volatil = separar_por_slash(string_volatil)
-
-    string_volatil = separar_por_str(string_volatil)
-
-    string_volatil = separar_por_int(string_volatil)
-
-    string_volatil = separar_por_char(string_volatil)
-
-    string_volatil = separar_por_float(string_volatil)
-    
-    string_volatil = separar_por_if(string_volatil)
-
-    string_volatil = separar_por_for(string_volatil)
-
-    string_volatil = separar_por_while(string_volatil)
 
     string_volatil = separar_por_espacio(string_volatil)
 
