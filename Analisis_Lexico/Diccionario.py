@@ -1,27 +1,25 @@
-# Declarando diccionario para identificar signos de puntuacion
-signos_puntuacion = {
+
+# DECLARANDO DICCIONARIO GENERAL DE SEPARADORES
+
+diccionario_general = {
+
+    # Declarando diccionario para identificar signos de puntuacion  
     ',':'coma',
     ';':'punto y coma',
-}
 
-# Declarando diccionario para identificar signos de agrupacion
-signos_agrupacion = {
+    # Declarando diccionario para identificar signos de agrupacion   
     '(': 'parentesis abierto',
     ')': 'parentesis cerrado',
     '[': 'corchete abierto',
     ']': 'corchete cerrado',
     '{': 'llave abierta',
-    '}': 'llave cerrada'
-}
+    '}': 'llave cerrada',
 
-# Declarando diccionario para identificar cadenas y caracteres
-cadenas_y_caracteres = {
+    # Declarando diccionario para identificar cadenas y caracteres
     '\"':'comillas',
-    '\'':'apostrofe'
-}
+    '\'':'apostrofe',
 
-# Declarando diccionario para identificar simbolos matematicos
-simbolos_matematicos = {
+    # Declarando diccionario para identificar simbolos matematicos
     '+':'suma',
     '-':'resta',
     '*':'multiplicacion',
@@ -32,15 +30,10 @@ simbolos_matematicos = {
     '<': 'menor',
     '=': 'igual',
 
-}
+    # Declarando diccionario para identificar comentarios
+    '#':'slash',
 
-# Declarando diccionario para identificar comentarios
-comentario = {
-    '#':'slash'
-}
-
-# Declarando diccionario para identificar palabras_reservadas
-palabras_reservadas = {
+    # Declarando diccionario para identificar palabras_reservadas
     'str':'cadena',
     'int':'entero',
     'char':'caracter',
@@ -48,4 +41,5 @@ palabras_reservadas = {
     'if':'condicional',
     'for':'inicio_for',
     'while':'inicio_while'
+
 }

@@ -1,7 +1,7 @@
 from Funciones_separadoras import *
+from Diccionario import *
 
-
-linea_de_texto = 'inthola = 1;'
+linea_de_texto = 'int hola = 1;'
 
 """PARTE QUE SEPARA LA LINEA DE TEXTO INGRESADA Y LA DEVUELVE COMO STRING Y COMO UNA LISTA DE ELEMENTOS SEPARADOS"""
 
@@ -81,15 +81,24 @@ lista = convertir_string_a_lista(string_extraido)
 
 """PARTE QUE SE ENCARGA DE IDENTIFICAR CADA UNO DE LOS ELEMENTOS DE LA LISTA HACIENDO LA RELACION [SIMBOLO-IDENTIFICADOR]"""
 
+# HAY QUE REVISAR ESTE METODO, NO ESTA COMPLETO Y ES DISFUNCIONAL 
 def identificar_tokens_lexicos(lista_ingresada):
     
+    #Declarando una lista en donde almacenar todos los identificadores
     lista_volatil = []
 
-    for elemento in lista_ingresada:
+    diccionario = diccionario_general.keys()
 
-        
+    for i in lista_ingresada:
+        for j in diccionario:
+            if (i == j):
+                """lista_volatil.append(diccionario_general[i])"""
+                print(diccionario_general[i])
+            else:
+                print("ERROR") 
 
 
 print(string_extraido)
 print(lista)
+print(identificar_tokens_lexicos(lista))
     
