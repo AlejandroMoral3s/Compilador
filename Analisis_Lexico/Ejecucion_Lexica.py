@@ -2,7 +2,7 @@ from Funciones_separadoras import *
 from Diccionario import *
 from Identificacion_Lexica import *
 
-linea_de_texto = 'hola{,;}'
+linea_de_texto = 'int hola = 2;'
 
 """PARTE QUE SEPARA LA LINEA DE TEXTO INGRESADA Y LA DEVUELVE COMO STRING Y COMO UNA LISTA DE ELEMENTOS SEPARADOS"""
 
@@ -93,28 +93,21 @@ def identificar_tokens_lexicos(lista_ingresada):
 
     #creando una variable booleana con valor iniciar FALSE
     coincidencia = False
-
-    """El primer ciclo evalua cada uno de los elementos de la lista separada previamente por
-    CONVERTIR_STRING_A_LISTA, el seugndo ciclo evalua cada uno de los elementos que se tienen en 
-    DICCIONARIO_GENERAL, dentro de ellos se encuentra un condicional que evalua si el elemento que 
-    se encuentra evaluandose en ese momento en ambos bucles es IGUAL, si lo es, entonces agrega
-    el valor que contiene el elemento(llave) que se esta evaluando en ese instante, y la variable
-    booleana se convierte en TRUE, cuando termina el ciclo de segundo nivel y se entra al segundo
-    condicional, este evalua si la variable booleana es FALSE (eso significaria que no se encontro
-    ninguna coincidencia dentro de las llaves del diccionario), de ser asi, agrega un texto de error
-    a la lista de identificadores. Por ultimo se hace que la variable vuelva a su estado original,
-    para que el proceso pueda repetirse nuevamente."""
  
     for x in lista_ingresada:
         for y in diccionario:
             if (y == x):
                 lista_volatil.append(diccionario_general[y])
                 coincidencia = True
-            #En desarrollo aun
-            """elif(identificar_ids(x)==True):
-                lista_volatil.append('Identificador')
-                coincidencia = True"""
-            
+
+        if(identificar_ids(x)==True and coincidencia == False):
+            lista_volatil.append('Identificador')
+            coincidencia = True
+
+        if(identificar_numeros(x)==True and coincidencia == False):
+            lista_volatil.append('Numero')
+            coincidencia = True
+
         if(coincidencia==False):
             lista_volatil.append("ERROR")
 
