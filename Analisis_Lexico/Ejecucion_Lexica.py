@@ -111,9 +111,9 @@ def identificar_tokens_lexicos(lista_ingresada):
                 lista_volatil.append(diccionario_general[y])
                 coincidencia = True
             #En desarrollo aun
-            elif(identificar_ids(x)==True):
+            """elif(identificar_ids(x)==True):
                 lista_volatil.append('Identificador')
-                coincidencia = True
+                coincidencia = True"""
             
         if(coincidencia==False):
             lista_volatil.append("ERROR")
