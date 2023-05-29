@@ -1,7 +1,7 @@
 from Funciones_separadoras import *
 from Diccionario import *
 
-linea_de_texto = 'int hola = 1;'
+linea_de_texto = 'hola{,;}'
 
 """PARTE QUE SEPARA LA LINEA DE TEXTO INGRESADA Y LA DEVUELVE COMO STRING Y COMO UNA LISTA DE ELEMENTOS SEPARADOS"""
 
@@ -84,18 +84,40 @@ lista = convertir_string_a_lista(string_extraido)
 # HAY QUE REVISAR ESTE METODO, NO ESTA COMPLETO Y ES DISFUNCIONAL 
 def identificar_tokens_lexicos(lista_ingresada):
     
-    #Declarando una lista en donde almacenar todos los identificadores
+    #Declarando una lista en donde almacenar todos los tokens identificados
     lista_volatil = []
 
+    #Declarando una lista en donde se encuentren todas solo las LLAVES del diccionario general
     diccionario = diccionario_general.keys()
 
-    for i in lista_ingresada:
-        for j in diccionario:
-            if (i == j):
-                """lista_volatil.append(diccionario_general[i])"""
-                print(diccionario_general[i])
-            else:
-                print("ERROR") 
+    #creando una variable booleana con valor iniciar FALSE
+    coindicencia = False
+
+    """El primer ciclo evalua cada uno de los elementos de la lista separada previamente por
+    CONVERTIR_STRING_A_LISTA, el seugndo ciclo evalua cada uno de los elementos que se tienen en 
+    DICCIONARIO_GENERAL, dentro de ellos se encuentra un condicional que evalua si el elemento que 
+    se encuentra evaluandose en ese momento en ambos bucles es IGUAL, si lo es, entonces agrega
+    el valor que contiene el elemento(llave) que se esta evaluando en ese instante, y la variable
+    booleana se convierte en TRUE, cuando termina el ciclo de segundo nivel y se entra al segundo
+    condicional, este evalua si la variable booleana es FALSE (eso significaria que no se encontro
+    ninguna coincidencia dentro de las llaves del diccionario), de ser asi, agrega un texto de error
+    a la lista de identificadores. Por ultimo se hace que la variable vuelva a su estado original,
+    para que el proceso pueda repetirse nuevamente."""
+    for x in lista_ingresada:
+        for y in diccionario:
+            if (y == x):
+                lista_volatil.append(diccionario_general[y])
+                coindicencia = True
+
+        if (coindicencia==False):
+            lista_volatil.append("ERROR")
+
+        coindicencia = False
+
+        
+
+    return lista_volatil
+
 
 
 print(string_extraido)
