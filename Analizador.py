@@ -1,3 +1,5 @@
+from Ejecucion_Lexica import *
+
 
 def extract_lines():
     with open('ReceptorLineas.txt', 'r') as f:

@@ -2,8 +2,6 @@ from Funciones_separadoras import *
 from Diccionario import *
 from Identificacion_Lexica import *
 
-linea_de_texto = 'int hola = 2;'
-
 """PARTE QUE SEPARA LA LINEA DE TEXTO INGRESADA Y LA DEVUELVE COMO STRING Y COMO UNA LISTA DE ELEMENTOS SEPARADOS"""
 
 #Esta funcion devuelve un STRING con todos los caracteres separados por un ESPACIO
@@ -76,10 +74,6 @@ def convertir_string_a_lista(linea):
     lista_separada = linea.split()
     return lista_separada
 
-string_extraido = extraer_string_separado(linea_de_texto)
-
-lista = convertir_string_a_lista(string_extraido)
-
 """PARTE QUE SE ENCARGA DE IDENTIFICAR CADA UNO DE LOS ELEMENTOS DE LA LISTA HACIENDO LA RELACION [SIMBOLO-IDENTIFICADOR]"""
  
 def identificar_tokens_lexicos(lista_ingresada):
@@ -115,8 +109,4 @@ def identificar_tokens_lexicos(lista_ingresada):
     return lista_volatil
 
 
-
-print(string_extraido)
-print(lista)
-print(identificar_tokens_lexicos(lista))
     
