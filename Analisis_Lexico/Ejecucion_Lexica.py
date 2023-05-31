@@ -81,8 +81,7 @@ string_extraido = extraer_string_separado(linea_de_texto)
 lista = convertir_string_a_lista(string_extraido)
 
 """PARTE QUE SE ENCARGA DE IDENTIFICAR CADA UNO DE LOS ELEMENTOS DE LA LISTA HACIENDO LA RELACION [SIMBOLO-IDENTIFICADOR]"""
-
-# HAY QUE REVISAR ESTE METODO, NO ESTA COMPLETO Y ES DISFUNCIONAL 
+ 
 def identificar_tokens_lexicos(lista_ingresada):
     
     #Declarando una lista en donde almacenar todos los tokens identificados
