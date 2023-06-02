@@ -28,7 +28,7 @@ diccionario_general = {
     '%':'modulo',
     '>': 'mayor',
     '<': 'menor',
-    '=': 'igual',
+    '=': 'asignacion',
 
     # Declarando diccionario para identificar comentarios
     '#':'slash',
