@@ -1,3 +1,2 @@
-int hola;
-int hola;
 int x = 1;
+int x = 3;
