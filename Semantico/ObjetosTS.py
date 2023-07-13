@@ -42,7 +42,6 @@ class Identificador:
     def contexto(self, contexto):
         self.__contexto = contexto
 
-
 Dimensiones_Tipos = {
 
     'entero': '4',
@@ -53,12 +52,15 @@ Dimensiones_Tipos = {
 
 }
 
-separada = ['bool', 'hola',',','adios', ';']
-identificada = ['booleano', 'Identificador','coma', 'Identificador', 'punto y coma']
 
 def devolver_id_y_tipo(lista_separada, lista_identificada):
 
-    lista_id_tipo = []
+    lista_id = []
+    lista_tipo = []
+    lista_dimension = []
+
+    lista_id_tipo_dimension = []
+
     iniciaConTipo = False
 
     for x in Dimensiones_Tipos.keys():
@@ -68,12 +70,17 @@ def devolver_id_y_tipo(lista_separada, lista_identificada):
     if iniciaConTipo == True:
         for x in range(0, len(lista_separada)):
             if lista_identificada[x] == 'Identificador':
-                lista_id_tipo.append(lista_separada[x])
-                lista_id_tipo.append(lista_identificada[x])
+                lista_id.append(lista_separada[x])
+                lista_tipo.append(lista_identificada[0])
+                lista_dimension.append(Dimensiones_Tipos[lista_identificada[0]])
+
+    lista_id_tipo_dimension.append(lista_id)
+    lista_id_tipo_dimension.append(lista_tipo)
+    lista_id_tipo_dimension.append(lista_dimension)
 
     iniciaConTipo = False
-    return lista_id_tipo
+    return lista_id_tipo_dimension
 
-print(devolver_id_y_tipo(separada, identificada))
+
 
 
