@@ -43,7 +43,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         if (existeRegla==True):
             print("Proceso SINTACTICO finalizado sin ningun error!\n")
-            print("PRUEBA DIFERENTE DE BRANCHES")
+            
         else:
             print(f"Se encontraron errores sintacticos en la linea [ {contador} ], por favor verificar.\n")     
 
