@@ -33,11 +33,15 @@ diccionario_general = {
     # Declarando diccionario para identificar comentarios
     '#':'slash',
 
-    # Declarando diccionario para identificar palabras_reservadas
+    # Declarando diccionario para identificar tipos de datos
     'str':'cadena',
     'int':'entero',
     'char':'caracter',
     'float':'flotante',
+    'double':'doble',
+    'bool':'booleano',
+    
+    #Declarando diccionario para identificar palabras reservadas
     'if':'condicional',
     'for':'inicio_for',
     'while':'inicio_while'

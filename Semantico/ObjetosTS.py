@@ -42,4 +42,38 @@ class Identificador:
     def contexto(self, contexto):
         self.__contexto = contexto
 
-        
+
+Dimensiones_Tipos = {
+
+    'entero': '4',
+    'doble': '8',
+    'caracter': '1',
+    'cadena': '255',
+    'booleano': '1'
+
+}
+
+separada = ['bool', 'hola',',','adios', ';']
+identificada = ['booleano', 'Identificador','coma', 'Identificador', 'punto y coma']
+
+def devolver_id_y_tipo(lista_separada, lista_identificada):
+
+    lista_id_tipo = []
+    iniciaConTipo = False
+
+    for x in Dimensiones_Tipos.keys():
+        if x == lista_identificada[0]:
+            iniciaConTipo = True
+    
+    if iniciaConTipo == True:
+        for x in range(0, len(lista_separada)):
+            if lista_identificada[x] == 'Identificador':
+                lista_id_tipo.append(lista_separada[x])
+                lista_id_tipo.append(lista_identificada[x])
+
+    iniciaConTipo = False
+    return lista_id_tipo
+
+print(devolver_id_y_tipo(separada, identificada))
+
+
