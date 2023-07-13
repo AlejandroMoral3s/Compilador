@@ -1,6 +1,6 @@
-from Funciones_separadoras import *
-from Diccionario import *
-from Identificacion_Lexica import *
+from Lexico.Funciones_separadoras import *
+from Lexico.Diccionario import *
+from Lexico.Identificacion_Lexica import *
 
 """PARTE QUE SEPARA LA LINEA DE TEXTO INGRESADA Y LA DEVUELVE COMO STRING Y COMO UNA LISTA DE ELEMENTOS SEPARADOS"""
 

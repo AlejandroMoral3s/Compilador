@@ -1,5 +1,5 @@
-from Ejecucion_Lexica import *
-from Proceso_Sintactico import *
+from Lexico.Ejecucion_Lexica import *
+from Sintactico.Proceso_Sintactico import *
 
 #metodo para juntar cada separacion con su correspondiente identificacion lexica
 def juntar_listas(lista_separada, lista_identificada):
@@ -23,10 +23,10 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         print(f"\n[ANALISIS LEXICO] ------- LINEA {contador} -------\n")
 
-        string_extraido = extraer_string_separado(linea)
-        lista_separada = convertir_string_a_lista(string_extraido)
-        lista_identificada = identificar_tokens_lexicos(lista_separada)
-        listas_juntas = juntar_listas(lista_separada, lista_identificada)
+        string_extraido = extraer_string_separado(linea) #Esta linea devuelve la linea (COMO STRING) ya separada por los caracteres
+        lista_separada = convertir_string_a_lista(string_extraido) #Esta linea devuelve la linea separada como una lista
+        lista_identificada = identificar_tokens_lexicos(lista_separada) #Esta linea devuelve la lista de separaciones a una lista de tokens
+        listas_juntas = juntar_listas(lista_separada, lista_identificada) # Esta linea se encarga de juntar la lista de separaciones con la de tokens
         print(listas_juntas)
 
         """----- ANALISIS SINTACTICO ---- """
