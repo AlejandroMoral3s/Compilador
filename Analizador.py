@@ -43,9 +43,9 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         if (existeRegla==True):
             print("Proceso SINTACTICO finalizado sin ningun error!\n")
+            print("PARTEEEE SEMANTICAAAAA") 
         else:
-            print(f"Se encontraron errores sintacticos en la linea [ {contador} ], por favor verificar.\n")
-            print("PARTEEEE SEMANTICAAAAA")      
+            print(f"Se encontraron errores sintacticos en la linea [ {contador} ], por favor verificar.\n")     
 
         contador+=1
         
