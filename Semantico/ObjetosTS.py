@@ -52,7 +52,6 @@ Dimensiones_Tipos = {
 
 }
 
-
 def devolver_id_y_tipo(lista_separada, lista_identificada):
 
     lista_id = []

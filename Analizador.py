@@ -1,5 +1,6 @@
 from Lexico.Ejecucion_Lexica import *
 from Sintactico.Proceso_Sintactico import *
+from Semantico.ObjetosTS import *
 
 #metodo para juntar cada separacion con su correspondiente identificacion lexica
 def juntar_listas(lista_separada, lista_identificada):
@@ -13,13 +14,18 @@ def juntar_listas(lista_separada, lista_identificada):
 
 
 
+
+
 with open('ReceptorLineas.txt', 'r') as f:
     read_data = f.read()
     lineas = read_data.splitlines()
     contador = 1
     for linea in lineas:
         
-        """----- ANALISIS LEXICO ---- """
+
+
+        """--------------------------------- ANALISIS LEXICO ------------------------------------------------------- """
+
 
         print(f"\n[ANALISIS LEXICO] ------- LINEA {contador} -------\n")
 
@@ -29,7 +35,10 @@ with open('ReceptorLineas.txt', 'r') as f:
         listas_juntas = juntar_listas(lista_separada, lista_identificada) # Esta linea se encarga de juntar la lista de separaciones con la de tokens
         print(listas_juntas)
 
-        """----- ANALISIS SINTACTICO ---- """
+
+
+        """--------------------------------- ANALISIS SINTÁCTICO ------------------------------------------------------- """
+
 
         print(f"\n[ANALISIS SINTACTICO] --- LINEA {contador} --------\n")
 
@@ -45,6 +54,15 @@ with open('ReceptorLineas.txt', 'r') as f:
             print("Proceso SINTACTICO finalizado sin ningun error!\n")
         else:
             print(f"Se encontraron errores sintacticos en la linea [ {contador} ], por favor verificar.\n")     
+
+
+
+        """--------------------------------- ANALISIS SEMANTICO ------------------------------------------------------- """
+
+
+        id_tipo_dimension = devolver_id_y_tipo(lista_separada, lista_identificada)
+        
+
 
         contador+=1
         
