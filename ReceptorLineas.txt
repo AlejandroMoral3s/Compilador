@@ -1,1 +1,2 @@
 float x;
+double y, z;
