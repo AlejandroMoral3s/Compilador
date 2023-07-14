@@ -12,8 +12,8 @@ def juntar_listas(lista_separada, lista_identificada):
     
     return lista_vacia
 
-
-
+#Almacen  de todos los objetos identificador que se lleguen a crear
+objetos_Identificador = []
 
 
 with open('ReceptorLineas.txt', 'r') as f:
@@ -60,12 +60,24 @@ with open('ReceptorLineas.txt', 'r') as f:
         """--------------------------------- ANALISIS SEMANTICO ------------------------------------------------------- """
 
 
+        #Extrayendo identificadores, tipos y dimensiones en una sola lista
         id_tipo_dimension = devolver_id_y_tipo(lista_separada, lista_identificada)
-        
+                
+        #clasificando en distintas listas los ids, tipos y dimensiones para un mejor orden y manejo
+        ids = id_tipo_dimension[0]
+        tipos = id_tipo_dimension[1]
+        dimensiones = id_tipo_dimension[2]
 
+        for i in range(0, len(ids)):
 
+            objetoVolatil = Identificador(ids[i], tipos[i], dimensiones[i])
+            objetos_Identificador.append(objetoVolatil)
+
+    
         contador+=1
-        
+
+    for i in objetos_Identificador:
+        print(i)   
     
 
         

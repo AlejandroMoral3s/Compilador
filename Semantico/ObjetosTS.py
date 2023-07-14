@@ -42,6 +42,9 @@ class Identificador:
     def contexto(self, contexto):
         self.__contexto = contexto
 
+    def __str__(self):
+        return f"OBJETO ID: Nombre [ {self.__nombre} ] Tipo [ {self.__tipo} ] Dimension [ {self.__dimension} ] Contexto [ {self.__contexto} ]"
+
 Dimensiones_Tipos = {
 
     'entero': '4',
