@@ -49,6 +49,7 @@ Dimensiones_Tipos = {
 
     'entero': '4',
     'doble': '8',
+    'flotante': '4',
     'caracter': '1',
     'cadena': '255',
     'booleano': '1'
