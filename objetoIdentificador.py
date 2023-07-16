@@ -1,6 +1,6 @@
 class Identificador:
 
-    def __init__(self, identificador, tipo, contexto=0, idContexto=0, linea = 0, dimension='null'):
+    def __init__(self, identificador, tipo, contexto, idContexto=0, linea=0, dimension='null'):
         self.__identificador = identificador
         self.__tipo = tipo
         self.__contexto = contexto
@@ -82,6 +82,3 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
                 identificadores.append(lista_separada[x])
 
     return [tipo, identificadores]
-
-
-

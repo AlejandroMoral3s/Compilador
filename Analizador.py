@@ -12,15 +12,20 @@ def juntar_listas(lista_separada, lista_identificada):
     
     return lista_vacia
 
+#ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
+objetosId = []
 
 
+#ABRIENDO ARCHIVO PARA EL ANALISIS
 with open('ReceptorLineas.txt', 'r') as f:
+    
     read_data = f.read()
     lineas = read_data.splitlines()
+
     contador_lineas = 1
     contador_contexto = 0
+    contador_idContexto = 0
 
-    objetosId = []
     
     #Comenzando el analisis por linea individual
 
@@ -37,6 +42,15 @@ with open('ReceptorLineas.txt', 'r') as f:
         lista_identificada = identificar_tokens_lexicos(lista_separada)
         listas_juntas = juntar_listas(lista_separada, lista_identificada)
         print(listas_juntas)
+
+
+        #MODIFICANDO EL CONTADOR CONTEXTO 
+
+        for x in lista_identificada:
+            if x == "llave abierta":
+                contador_contexto+=1
+            elif x == "llave cerrada":
+                contador_contexto-=1
 
 
         """-------------------------------------------------------------------------------------------------------------- """
@@ -64,15 +78,15 @@ with open('ReceptorLineas.txt', 'r') as f:
         """-------------------------------------------------------------------------------------------------------------- """
 
         Id_y_tipo = extraer_identificadores_declaraciones(lista_separada, lista_identificada)
-        
+            
         for x in Id_y_tipo[1]:
-            objetosId.append(Identificador(x, Id_y_tipo[0]))
-
-        for x in objetosId:
-            print(x)
+            objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, idContexto=contador_idContexto, linea=contador_lineas))
+            contador_idContexto+=1
 
         contador_lineas+=1
         
+    for x in objetosId:
+        print(x)
     
 
         
