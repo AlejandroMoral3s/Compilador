@@ -38,6 +38,9 @@ diccionario_general = {
     'int':'entero',
     'char':'caracter',
     'float':'flotante',
+    'bool':'booleano',
+    'double':'doble',
+
     'if':'condicional',
     'for':'inicio_for',
     'while':'inicio_while'
