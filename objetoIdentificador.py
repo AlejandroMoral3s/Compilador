@@ -62,8 +62,7 @@ class Identificador:
 
 tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'flotante', 'booleano', 'doble']
 
-#separada = ['int', 'hola',',','adios',';']
-#identificada = ['entero', 'Identificador','coma','Identificador', 'punto y coma'] ESTAS SOLO SON PARA PRUEBAS
+
 
 def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
     
@@ -82,3 +81,24 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
                 identificadores.append(lista_separada[x])
 
     return [tipo, identificadores]
+
+
+# METODO EN PROCESO
+def extraer_valor_de_variables(lista_separada, lista_identificada):
+
+    variables_encontradas = []
+    valor_correspondiente = []
+
+    if len(lista_identificada) >= 3:
+        for x in range(0, len(lista_identificada)-1):
+            if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and lista_identificada[x+2] == 'Numero':
+                variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(lista_separada[x+2])
+
+    return [variables_encontradas, valor_correspondiente]
+
+
+
+
+            
+
