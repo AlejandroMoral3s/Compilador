@@ -15,6 +15,9 @@ def juntar_listas(lista_separada, lista_identificada):
 #ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
 objetosId = []
 
+#ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
+almacen_ids_asignacion = []
+almacen_valores_asignacion = []
 
 #ABRIENDO ARCHIVO PARA EL ANALISIS
 with open('ReceptorLineas.txt', 'r') as f:
@@ -85,8 +88,10 @@ with open('ReceptorLineas.txt', 'r') as f:
             objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, idContexto=contador_idContexto, linea=contador_lineas))
             contador_idContexto+=1
 
+        #Extrayendo identificadores y valores encontradas en ASIGNACIONES
         Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
-        print(Id_y_valor)
+        
+        
 
         contador_lineas+=1
 
