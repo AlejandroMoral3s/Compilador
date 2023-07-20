@@ -106,10 +106,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         contador_lineas+=1
 
     
-    for i in range(0, len(objetosId)):
-        for j in range(0, len(almacen_ids_asignacion)):
-            if objetosId[i].identificador == almacen_ids_asignacion[j]:
-                objetosId[i].valor = almacen_valores_asignacion[j]
+    asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion)
 
 
     for x in objetosId:

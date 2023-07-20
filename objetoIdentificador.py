@@ -99,7 +99,7 @@ tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'flotante', 'boo
 
 
 def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
-    
+
     esDeclaracion = False
     tipo = ''
     identificadores = []
@@ -111,7 +111,7 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
 
     if esDeclaracion:
         for x in range(0, len(lista_identificada)):
-            if lista_identificada[x] == 'Identificador':
+            if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] != 'comillas' and lista_identificada[x+1] != 'apostrofe' and lista_identificada[x-1] != 'comillas' and lista_identificada[x-1] != 'apostrofe':
                 identificadores.append(lista_separada[x])
 
     return [tipo, identificadores]
@@ -128,9 +128,24 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(lista_separada[x+2])
 
+    # x = " hola "  | TE AMO!!!!!!!
+    if len(lista_identificada) >= 5:
+        for x in range(0, len(lista_identificada)-3):
+            if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Numero' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
+                variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(str(lista_separada[x+3]))
+            
+
     return [variables_encontradas, valor_correspondiente]
 
 
+
+def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids):
+
+    for i in range(0, len(lista_objetos)):
+        for j in range(0, len(lista_ids_asignados)):
+            if lista_objetos[i].identificador == lista_ids_asignados[j]:
+                lista_objetos[i].valor = lista_valores_ids[j]
 
 
             
