@@ -77,23 +77,37 @@ with open('ReceptorLineas.txt', 'r') as f:
 
 
         """-------------------------------------------------------------------------------------------------------------- """
-        """------------------------------------------ ANALISIS SEMANTICO ----------------------------------------------- """
+        """------------------------------------------ ANALISIS SEMANTICO ------------------------------------------------ """
         """-------------------------------------------------------------------------------------------------------------- """
 
-        #Extrayendo identificadore y tipo de las variables mostradas en DECLARACIONES sin valor aun
+
+        # Extrayendo identificadore y tipo de las variables mostradas en DECLARACIONES sin valor
+
         Id_y_tipo = extraer_identificadores_declaraciones(lista_separada, lista_identificada)
-            
-        #Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
+        
+
+        # Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
+
         for x in Id_y_tipo[1]:
             objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, idContexto=contador_idContexto, linea=contador_lineas))
             contador_idContexto+=1
 
-        #Extrayendo identificadores y valores encontradas en ASIGNACIONES
+
+        # Extrayendo identificadores y valores encontradas en ASIGNACIONES
+
         Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
-        
-        
+
+        for i in range(0, len(Id_y_valor[0])):
+            almacen_ids_asignacion.append(Id_y_valor[0][i])
+            almacen_valores_asignacion.append(Id_y_valor[1][i])
+
+
 
         contador_lineas+=1
+
+
+    print(almacen_ids_asignacion)
+    print(almacen_valores_asignacion)
 
     for x in objetosId:
         print(x)

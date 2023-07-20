@@ -63,7 +63,6 @@ class Identificador:
 tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'flotante', 'booleano', 'doble']
 
 
-
 def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
     
     esDeclaracion = False
