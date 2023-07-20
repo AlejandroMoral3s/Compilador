@@ -2,7 +2,9 @@ from Ejecucion_Lexica import *
 from Proceso_Sintactico import *
 from objetoIdentificador import *
 
+
 #metodo para juntar cada separacion con su correspondiente identificacion lexica
+
 def juntar_listas(lista_separada, lista_identificada):
     lista_vacia = []
     for x in range(0,len(lista_separada)):
@@ -101,13 +103,14 @@ with open('ReceptorLineas.txt', 'r') as f:
             almacen_ids_asignacion.append(Id_y_valor[0][i])
             almacen_valores_asignacion.append(Id_y_valor[1][i])
 
-
-
         contador_lineas+=1
 
+    
+    for i in range(0, len(objetosId)):
+        for j in range(0, len(almacen_ids_asignacion)):
+            if objetosId[i].identificador == almacen_ids_asignacion[j]:
+                objetosId[i].valor = almacen_valores_asignacion[j]
 
-    print(almacen_ids_asignacion)
-    print(almacen_valores_asignacion)
 
     for x in objetosId:
         print(x)

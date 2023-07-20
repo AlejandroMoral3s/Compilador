@@ -1,12 +1,16 @@
 class Identificador:
 
-    def __init__(self, identificador, tipo, contexto, idContexto=0, linea=0, dimension='null'):
+    def __init__(self, identificador, tipo, valor = 'null', tipoValor = 'null', contexto = 0, idContexto=0, linea=0, dimension='null'):
         self.__identificador = identificador
         self.__tipo = tipo
+        self.__valor = valor
+        self.__tipoValor = tipoValor
         self.__contexto = contexto
         self.__idContexto = idContexto
         self.__linea = linea
         self.__dimension = dimension
+
+    # Creando metodos GET Y SET para el identificador
 
     @property
     def identificador(self):
@@ -16,6 +20,8 @@ class Identificador:
     def identificador(self, identificador):
         self.__identificador = identificador
 
+    # Creando metodos GET Y SET para el tipo de declaracion
+
     @property
     def tipo(self):
         return self.__tipo
@@ -23,6 +29,28 @@ class Identificador:
     @tipo.setter
     def tipo(self, tipo):
         self.__tipo = tipo
+
+    # Creando metodos GET Y SET para el valor del identificador en asignacion
+
+    @property
+    def valor(self):
+        return self.__valor
+    
+    @valor.setter
+    def valor(self, valor):
+        self.__valor = valor
+
+    # Creando metodos GET Y SET para el tipo de valor asignado
+
+    @property
+    def tipoValor(self):
+        return self.__tipoValor
+    
+    @tipoValor.setter
+    def tipoValor(self, tipoValor):
+        self.__tipoValor = tipoValor
+
+    # Creando metodos GET Y SET para el numero correspondiente al contexto
 
     @property
     def contexto(self):
@@ -32,6 +60,8 @@ class Identificador:
     def contexto(self, contexto):
         self.__contexto = contexto
 
+    # Creando metodos GET Y SET para el ID del contexto
+
     @property
     def idContexto(self):
         return self.__idContexto
@@ -39,6 +69,8 @@ class Identificador:
     @idContexto.setter
     def idContexto(self, idContexto):
         self.__idContexto = idContexto
+
+    # Creando metodos GET Y SET para el numero de linea en donde se hizo una declaracion
 
     @property
     def linea(self):
@@ -48,6 +80,8 @@ class Identificador:
     def linea(self, linea):
         self.__linea = linea
 
+    # Creando metodos GET Y SET para la dimension del valor asignado
+
     @property
     def dimension(self):
         return self.__dimension
@@ -56,8 +90,9 @@ class Identificador:
     def dimension(self, dimension):
         self.__dimension = dimension
 
+
     def __str__(self):
-        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
+        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Valor [ {self.__valor} ]  TipoValor [ {self.__tipoValor} ] Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
 
 
 tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'flotante', 'booleano', 'doble']
@@ -82,7 +117,6 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
     return [tipo, identificadores]
 
 
-# METODO EN PROCESO
 def extraer_valor_de_variables(lista_separada, lista_identificada):
 
     variables_encontradas = []
