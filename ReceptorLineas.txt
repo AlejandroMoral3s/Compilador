@@ -1,1 +1,2 @@
-int x = '2';
+int x = 'hola';
+double y = 2;

@@ -123,18 +123,25 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
     valor_correspondiente = []
 
     if len(lista_identificada) >= 3:
+
         for x in range(0, len(lista_identificada)-1):
+
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and lista_identificada[x+2] == 'Numero':
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(lista_separada[x+2])
 
-    # x = " hola "  | TE AMO!!!!!!!
     if len(lista_identificada) >= 5:
+
         for x in range(0, len(lista_identificada)-3):
+            
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Numero' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(str(lista_separada[x+3]))
             
+            elif lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Identificador' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
+                variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(str(lista_separada[x+3]))
+
 
     return [variables_encontradas, valor_correspondiente]
 
