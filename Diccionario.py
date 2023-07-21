@@ -37,8 +37,6 @@ diccionario_general = {
     'str':'cadena',
     'int':'entero',
     'char':'caracter',
-    'float':'flotante',
-    'bool':'booleano',
     'double':'doble',
 
     'if':'condicional',

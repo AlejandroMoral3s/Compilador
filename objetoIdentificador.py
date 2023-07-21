@@ -95,7 +95,7 @@ class Identificador:
         return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Valor [ {self.__valor} ]  TipoValor [ {self.__tipoValor} ] Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
 
 
-tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'flotante', 'booleano', 'doble']
+tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'doble']
 
 
 def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
