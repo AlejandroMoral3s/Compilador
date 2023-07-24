@@ -122,6 +122,9 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
     variables_encontradas = []
     valor_correspondiente = []
 
+    tipoValor = []
+    dimension = []
+
     if len(lista_identificada) >= 3:
 
         for x in range(0, len(lista_identificada)-1):
@@ -129,6 +132,13 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and lista_identificada[x+2] == 'Numero':
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(lista_separada[x+2])
+                
+                if "." in lista_separada[x+2]:
+                    tipoValor.append('doble')
+                else:
+                    tipoValor.append('entero')
+
+                dimension.append(lista_separada[x+2])
 
     if len(lista_identificada) >= 5:
 
@@ -137,22 +147,33 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Numero' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(str(lista_separada[x+3]))
+                tipoValor.append('cadena')
+                dimension.append(str(len(lista_separada[x+3])))
             
             elif lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Identificador' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
                 variables_encontradas.append(lista_separada[x])
                 valor_correspondiente.append(str(lista_separada[x+3]))
 
+                if len(lista_separada[x+3]) > 1:
+                    tipoValor.append('cadena')
+                else:
+                    tipoValor.append('caracter')
 
-    return [variables_encontradas, valor_correspondiente]
+                dimension.append(str(len(lista_separada[x+3])))
+
+
+    return [variables_encontradas, valor_correspondiente, tipoValor, dimension]
 
 
 
-def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids):
+def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids, lista_tipoValor, lista_dimensiones):
 
     for i in range(0, len(lista_objetos)):
         for j in range(0, len(lista_ids_asignados)):
             if lista_objetos[i].identificador == lista_ids_asignados[j]:
                 lista_objetos[i].valor = lista_valores_ids[j]
+                lista_objetos[i].tipoValor = lista_tipoValor[j]
+                lista_objetos[i].dimension = lista_dimensiones[j]
 
 
             

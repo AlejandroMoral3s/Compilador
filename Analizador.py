@@ -20,6 +20,8 @@ objetosId = []
 #ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
 almacen_ids_asignacion = []
 almacen_valores_asignacion = []
+almacen_tipo_valores = []
+almacen_dimensiones = []
 
 #ABRIENDO ARCHIVO PARA EL ANALISIS
 with open('ReceptorLineas.txt', 'r') as f:
@@ -102,11 +104,13 @@ with open('ReceptorLineas.txt', 'r') as f:
         for i in range(0, len(Id_y_valor[0])):
             almacen_ids_asignacion.append(Id_y_valor[0][i])
             almacen_valores_asignacion.append(Id_y_valor[1][i])
+            almacen_tipo_valores.append(Id_y_valor[2][i])
+            almacen_dimensiones.append(Id_y_valor[3][i])
 
         contador_lineas+=1
 
     
-    asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion)
+    asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion, almacen_tipo_valores, almacen_dimensiones)
 
 
     for x in objetosId:
