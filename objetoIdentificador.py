@@ -1,4 +1,4 @@
-class Identificador:
+class IdentificadorD:
 
     def __init__(self, identificador, tipo, valor = 'null', tipoValor = 'null', nombreContexto = 'principal', contexto = 0, idContexto=0, linea=0, dimension='null'):
         self.__identificador = identificador

@@ -95,7 +95,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         # Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
 
         for x in Id_y_tipo[1]:
-            objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, nombreContexto=nombre_contexto, idContexto=contador_idContexto, linea=contador_lineas))
+            objetosId.append(IdentificadorD(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, nombreContexto=nombre_contexto, idContexto=contador_idContexto, linea=contador_lineas))
             contador_idContexto+=1
 
 
@@ -108,6 +108,8 @@ with open('ReceptorLineas.txt', 'r') as f:
             almacen_valores_asignacion.append(Id_y_valor[1][i])
             almacen_tipo_valores.append(Id_y_valor[2][i])
             almacen_dimensiones.append(Id_y_valor[3][i])
+
+            
 
         contador_lineas+=1
 
