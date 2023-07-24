@@ -1,2 +1,5 @@
 int x = 'hola';
 double y = 2;
+suma{
+    int x = 3;
+}

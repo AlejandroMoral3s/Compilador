@@ -1,10 +1,11 @@
 class Identificador:
 
-    def __init__(self, identificador, tipo, valor = 'null', tipoValor = 'null', contexto = 0, idContexto=0, linea=0, dimension='null'):
+    def __init__(self, identificador, tipo, valor = 'null', tipoValor = 'null', nombreContexto = 'principal', contexto = 0, idContexto=0, linea=0, dimension='null'):
         self.__identificador = identificador
         self.__tipo = tipo
         self.__valor = valor
         self.__tipoValor = tipoValor
+        self.__nombreContexto = nombreContexto
         self.__contexto = contexto
         self.__idContexto = idContexto
         self.__linea = linea
@@ -50,6 +51,16 @@ class Identificador:
     def tipoValor(self, tipoValor):
         self.__tipoValor = tipoValor
 
+    # Creando metodos GET Y SET para el nombre de contexto asignado
+
+    @property
+    def nombreContexto(self):
+        return self.__nombreContexto
+    
+    @nombreContexto.setter
+    def nombreContexto(self, nombreContexto):
+        self.__nombreContexto = nombreContexto
+
     # Creando metodos GET Y SET para el numero correspondiente al contexto
 
     @property
@@ -92,7 +103,7 @@ class Identificador:
 
 
     def __str__(self):
-        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Valor [ {self.__valor} ]  TipoValor [ {self.__tipoValor} ] Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
+        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Valor [ {self.__valor} ]  TipoValor [ {self.__tipoValor} ] nombreContexto [ {self.__nombreContexto} ] Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
 
 
 tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'doble']

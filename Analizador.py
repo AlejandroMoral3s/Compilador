@@ -32,6 +32,7 @@ with open('ReceptorLineas.txt', 'r') as f:
     contador_lineas = 1
     contador_contexto = 0
     contador_idContexto = 0
+    nombre_contexto = 'principal'
 
     
     #Comenzando el analisis por linea individual
@@ -53,10 +54,11 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #MODIFICANDO EL CONTADOR CONTEXTO 
 
-        for x in lista_identificada:
-            if x == "llave abierta":
+        for x in range(0, len(lista_identificada)):
+            if lista_identificada[x] == "Identificador" and lista_identificada[x+1] == "llave abierta":
+                nombre_contexto = lista_separada[x]
                 contador_contexto+=1
-            elif x == "llave cerrada":
+            elif lista_identificada[x] == "llave cerrada":
                 contador_contexto-=1
 
 
@@ -93,7 +95,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         # Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
 
         for x in Id_y_tipo[1]:
-            objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, idContexto=contador_idContexto, linea=contador_lineas))
+            objetosId.append(Identificador(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, nombreContexto=nombre_contexto, idContexto=contador_idContexto, linea=contador_lineas))
             contador_idContexto+=1
 
 
@@ -112,6 +114,11 @@ with open('ReceptorLineas.txt', 'r') as f:
     
     asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion, almacen_tipo_valores, almacen_dimensiones)
 
+
+    print(almacen_valores_asignacion)
+    print(almacen_ids_asignacion)
+    print(almacen_tipo_valores)
+    print(almacen_dimensiones)
 
     for x in objetosId:
         print(x)
