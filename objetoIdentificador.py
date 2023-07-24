@@ -176,6 +176,7 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
     return [variables_encontradas, valor_correspondiente, tipoValor, dimension]
 
 
+#PROBLEMA AL ASIGNAR VALORES EN DIFERENTES CONTEXTOS Y MISMOS IDENTIFICADORES
 
 def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids, lista_tipoValor, lista_dimensiones):
 
