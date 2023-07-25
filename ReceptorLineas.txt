@@ -1,5 +1,8 @@
-int x = 'hola';
-double y = 2;
+int z;
 suma{
-    int x = 3;
+    int x;
 }
+resta{
+    int x;
+}
+double z = 3;

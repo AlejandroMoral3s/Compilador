@@ -1,6 +1,7 @@
 from Ejecucion_Lexica import *
 from Proceso_Sintactico import *
 from objetoIdentificador import *
+from objetoIdAsignacion import *
 
 
 #metodo para juntar cada separacion con su correspondiente identificacion lexica
@@ -16,6 +17,7 @@ def juntar_listas(lista_separada, lista_identificada):
 
 #ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
 objetosId = []
+objetosAsignacion = []
 
 #ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
 almacen_ids_asignacion = []
@@ -66,6 +68,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         """------------------------------------------ ANALISIS SINTACTICO ----------------------------------------------- """
         """-------------------------------------------------------------------------------------------------------------- """
 
+
         print(f"\n[ANALISIS SINTACTICO] --- LINEA {contador_lineas} --------\n")
 
         string_sintactico = expresar_cadena_lexica_identificada(lista_identificada)
@@ -80,6 +83,7 @@ with open('ReceptorLineas.txt', 'r') as f:
             print("Proceso SINTACTICO finalizado sin ningun error!\n")
         else:
             print(f"Se encontraron errores sintacticos en la linea [ {contador_lineas} ], por favor verificar.\n")        
+
 
 
         """-------------------------------------------------------------------------------------------------------------- """
@@ -103,29 +107,56 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
 
+        #Distribuyendo en arrays por aparte cada atributo de los identificadores de asignacion
         for i in range(0, len(Id_y_valor[0])):
             almacen_ids_asignacion.append(Id_y_valor[0][i])
             almacen_valores_asignacion.append(Id_y_valor[1][i])
             almacen_tipo_valores.append(Id_y_valor[2][i])
             almacen_dimensiones.append(Id_y_valor[3][i])
 
-            
+        #Creacion de objetos corespondientes a los identificadores encontrados en ASIGNACIONES
+        for x in Id_y_valor[0]:
+            objetosAsignacion.append(IdentificadorA(x, nombreContexto=nombre_contexto, contexto=contador_contexto, linea=contador_lineas))
+
 
         contador_lineas+=1
 
-    
-    asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion, almacen_tipo_valores, almacen_dimensiones)
 
+    #EN PROCESO: asignacion de valores correspondientes
+    #asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion, almacen_tipo_valores, almacen_dimensiones)
 
-    print(almacen_valores_asignacion)
-    print(almacen_ids_asignacion)
-    print(almacen_tipo_valores)
-    print(almacen_dimensiones)
+    errorUnicidad = False
+    errorDeclaracion = False
 
+    #CONDICIONALES PARA MARCAR ERROR
+
+    idsD = []
+    contextoD = []
+    nContextoD = []
+
+    for x in objetosId:
+        idsD.append(x.identificador)
+        contextoD.append(x.contexto)
+        nContextoD.append(x.nombreContexto)
+
+    if len(idsD) != len(set(idsD)) and len(contextoD) != len(set(contextoD)) and len(nContextoD) != len(set(nContextoD)):
+        errorUnicidad = True
+
+    print(idsD)
+    print(contextoD)
+    print(nContextoD)
+
+    print(errorUnicidad)
+
+    # Mostrando OBJETOS EN OBJETOS DECLARACION Y ASIGNACION
+     
     for x in objetosId:
         print(x)
     
+    print('')
 
+    for x in objetosAsignacion:
+        print(x)
         
         
         
