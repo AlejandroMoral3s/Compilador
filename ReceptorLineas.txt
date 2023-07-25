@@ -1,8 +1,2 @@
-int z;
-suma{
-    int x;
-}
-resta{
-    int x;
-}
-double z = 3;
+x=3;
+int x;

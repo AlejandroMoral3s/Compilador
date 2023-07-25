@@ -122,13 +122,15 @@ with open('ReceptorLineas.txt', 'r') as f:
         contador_lineas+=1
 
 
+    print(f"\n[ANALISIS SEMANTICO] ----------\n")
+
     #EN PROCESO: asignacion de valores correspondientes
     #asignar_nuevos_valores(objetosId, almacen_ids_asignacion, almacen_valores_asignacion, almacen_tipo_valores, almacen_dimensiones)
 
     errorUnicidad = False
     errorDeclaracion = False
 
-    #CONDICIONALES PARA MARCAR ERROR
+    #CODIGO PARA VALIDAR LOS ERRORES DE UNICIDAD ---------------------------------------------------------------------
 
     idsD = []
     contextoD = []
@@ -142,21 +144,44 @@ with open('ReceptorLineas.txt', 'r') as f:
     if len(idsD) != len(set(idsD)) and len(contextoD) != len(set(contextoD)) and len(nContextoD) != len(set(nContextoD)):
         errorUnicidad = True
 
-    print(idsD)
-    print(contextoD)
-    print(nContextoD)
 
-    print(errorUnicidad)
+
+    #CODIGO PARA VALIDAR LOS ERRORES DE DECLARACION -------------------------------------------------------------------
+
+    if len(objetosId) == 0 and len(objetosAsignacion) !=0:
+        errorDeclaracion = True
+    
+    if errorDeclaracion == False:
+        for x in objetosAsignacion:
+            for y in objetosId:
+                if x.identificador == y.identificador and x.linea < y.linea :
+                    errorDeclaracion = True
+                elif x.identificador == y.identificador and x.contexto == y.contexto and x.nombreContexto != y.nombreContexto:
+                    errorDeclaracion = True
+
+
+    #CONCLUYENDO EL ANALISIS SEMANTICO
+
+    if errorDeclaracion and errorUnicidad:
+        print("EXISTEN ERRORES DE TIPO: [ DECLARACION ] y [ UNICIDAD ], por favor verificar.")
+    elif errorUnicidad and not(errorDeclaracion):
+        print("EXISTE UN ERROR DE TIPO: [ UNICIDAD ], por favor verificar.")
+    elif errorDeclaracion and not(errorUnicidad):
+        print("EXISTE UN ERROR DE TIPO: [ DECLARACION ], por favor verificar.")
+    else:
+        print("ANALISIS SEMANTICO FINALIZADO SIN NINGUNA COMPLICACION! :D")
+    
+    print('')
 
     # Mostrando OBJETOS EN OBJETOS DECLARACION Y ASIGNACION
      
-    for x in objetosId:
+    """for x in objetosId:
         print(x)
     
     print('')
 
     for x in objetosAsignacion:
-        print(x)
+        print(x)"""
         
         
         
