@@ -1,6 +1,6 @@
 class IdentificadorA:
 
-    def __init__(self, identificador, nombreContexto, contexto, linea):
+    def __init__(self, identificador, nombreContexto = 'principal', contexto = 0, linea = 1):
         
 
         self.__identificador = identificador

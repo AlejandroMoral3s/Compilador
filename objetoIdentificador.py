@@ -106,10 +106,9 @@ class IdentificadorD:
         return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  Tipo [ {self.__tipo} ]  Valor [ {self.__valor} ]  TipoValor [ {self.__tipoValor} ] nombreContexto [ {self.__nombreContexto} ] Contexto [ {self.__contexto} ]  IdContexto [ {self.__idContexto} ]  Linea [ {self.__linea} ]  Dimension [ {self.__dimension} ]"
 
 
-tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'doble']
-
-
 def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
+
+    tipos_de_datos_identificados = ['cadena', 'entero', 'caracter', 'doble']
 
     esDeclaracion = False
     tipo = ''
@@ -127,6 +126,16 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
 
     return [tipo, identificadores]
 
+def comprobacionUnicidad(objetosId, objetoVolatil):
+    errorUnicidad = False
+
+    for x in objetosId:
+        if len(objetosId) != 0:
+            if x.identificador == objetoVolatil.identificador and x.contexto == objetoVolatil.contexto and x.nombreContexto == objetoVolatil.nombreContexto:
+                errorUnicidad = True
+
+
+    return errorUnicidad
 
 def extraer_valor_de_variables(lista_separada, lista_identificada):
 
