@@ -1,7 +1,6 @@
-int y;
 suma{
     int x;
-    int x;
 }
-int y, x;
-int x;
+resta{
+    x=3;
+}

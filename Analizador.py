@@ -49,6 +49,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         """-------------------------------------------------------------------------------------------------------------- """
        
         errorUnicidad = False
+        errorDeclaracion = False
 
         print(f'\n-----------------------------------------------NO. LINEA: [ {contador_lineas} ] -----------------------------------------------\n')
 
@@ -61,7 +62,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         for x in listas_juntas:
             if x[1] != "ERROR":
-                print("\033[1;32m"+"SIN ERRORES!\n"+"\033[0m")
+                print("\033[1;32m"+"SIN ERRORES!"+"\033[0m")
                 break
             else:
                 print("\033[1;31m"+"SE ENCONTRARON ERRORES LEXICOS EN LA LINEA ACTUAL"+"\033[0m")
@@ -120,6 +121,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
                 if contador_contexto == 0:
 
+                    #proceso de solo identificadores
                     objetoVolatil = IdentificadorD(identificador=x, tipo=Id_y_tipo[0],contexto=contador_contexto, idContexto=contador_idContexto, linea=contador_lineas)
                     nombre_contexto = 'principal'
                     
@@ -127,7 +129,7 @@ with open('ReceptorLineas.txt', 'r') as f:
                     if errorUnicidad != True:
                         errorUnicidad = comprobacionUnicidad(objetosId, objetoVolatil)
 
-                    objetosId.append(objetoVolatil)        
+                    objetosId.append(objetoVolatil)
 
                 else:
                 
@@ -159,16 +161,33 @@ with open('ReceptorLineas.txt', 'r') as f:
                 if contador_contexto == 0:
                     objetosAsignacion.append(IdentificadorA(x, contexto=contador_contexto, linea=contador_lineas))
                     nombre_contexto = 'principal'
+                        
+                    if not(errorDeclaracion):
+                        if len(objetosId) != 0 and len(objetosAsignacion) != 0:
+                            for i in objetosAsignacion:
+                                for j in objetosId:
+                                    if i.identificador != j.identificador and i.contexto < j.contexto and i.linea < j.linea:
+                                        errorDeclaracion = True
+                                    elif i.identificador == j.identificador and i.nombreContexto != j.nombreContexto:
+                                        errorDeclaracion = True
+                        else:
+                            errorDeclaracion = True
+                                
                 else:
                     objetosAsignacion.append(IdentificadorA(x, nombreContexto=nombre_contexto, contexto=contador_contexto, linea=contador_lineas))
-
+                    
 
         #COMPROBANDO ERRORES DE UNICIDAD: EN PROCESO
 
-        if errorUnicidad:
+        if errorUnicidad and errorDeclaracion:
+            print("\033[1;31m"+"ERROR DE UNICIDAD Y DECLARACION EN ESTA LINEA\n"+"\033[0m")
+        elif errorUnicidad and not(errorDeclaracion):
             print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
+        elif errorDeclaracion and not(errorUnicidad):
+            print("\033[1;31m"+"ERROR DE DECLARACION EN ESTA LINEA\n"+"\033[0m")
         else:
             print("\033[1;32m"+"SIN ERRORES!\n"+"\033[0m")
+
 
         print("\033[35m"+'=================================================================================================================='+"\033[0m")
 

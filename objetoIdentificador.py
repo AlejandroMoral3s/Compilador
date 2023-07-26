@@ -134,8 +134,9 @@ def comprobacionUnicidad(objetosId, objetoVolatil):
             if x.identificador == objetoVolatil.identificador and x.contexto == objetoVolatil.contexto and x.nombreContexto == objetoVolatil.nombreContexto:
                 errorUnicidad = True
 
-
     return errorUnicidad
+
+
 
 def extraer_valor_de_variables(lista_separada, lista_identificada):
 
