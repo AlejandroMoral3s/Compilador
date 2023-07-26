@@ -144,7 +144,9 @@ with open('ReceptorLineas.txt', 'r') as f:
     if len(idsD) != len(set(idsD)) and len(contextoD) != len(set(contextoD)) and len(nContextoD) != len(set(nContextoD)):
         errorUnicidad = True
 
-
+    print(idsD)
+    print(contextoD)
+    print(nContextoD)
 
     #CODIGO PARA VALIDAR LOS ERRORES DE DECLARACION -------------------------------------------------------------------
 

@@ -1,2 +1,7 @@
-x=3;
+suma{
+    int x;
+}
+resta{
+    int x;
+}
 int x;
