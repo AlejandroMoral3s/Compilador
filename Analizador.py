@@ -19,6 +19,7 @@ def juntar_listas(lista_separada, lista_identificada):
 
 #ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
 objetosId = []
+
 objetosAsignacion = []
 
 #ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
@@ -95,7 +96,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         if (existeRegla==True):
             print("\033[1;32m"+"SIN ERRORES!\n"+"\033[0m")
         else:
-            print("\033[1;31m"+"SE ENCONTRARON ERRORES SINTACTICOS EN LA LINEA ACTUAL"+"\033[0m")        
+            print("\033[1;31m"+"SE ENCONTRARON ERRORES SINTACTICOS EN LA LINEA ACTUAL"+"\033[0m")   
 
 
 
@@ -109,11 +110,9 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         Id_y_tipo = extraer_identificadores_declaraciones(lista_separada, lista_identificada)
 
-
         # Extrayendo identificadores y valores encontradas en ASIGNACIONES
 
         Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
-
 
         # Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
         if Id_y_tipo[0] != '':
@@ -146,36 +145,51 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #Distribuyendo en arrays por aparte cada atributo de los identificadores de asignacion
         
-        if len(Id_y_valor[0]) != 0:
-            
-            for i in range(0, len(Id_y_valor[0])):
-                almacen_ids_asignacion.append(Id_y_valor[0][i])
-                almacen_valores_asignacion.append(Id_y_valor[1][i])
-                almacen_tipo_valores.append(Id_y_valor[2][i])
-                almacen_dimensiones.append(Id_y_valor[3][i])
-
+        if len(Id_y_valor) != 0:
 
             #Creacion de objetos corespondientes a los identificadores encontrados en ASIGNACIONES
-            for x in Id_y_valor[0]:
+            for x in Id_y_valor:
 
                 if contador_contexto == 0:
                     objetosAsignacion.append(IdentificadorA(x, contexto=contador_contexto, linea=contador_lineas))
                     nombre_contexto = 'principal'
-                        
-                    if not(errorDeclaracion):
-                        if len(objetosId) != 0 and len(objetosAsignacion) != 0:
-                            for i in objetosAsignacion:
-                                for j in objetosId:
-                                    if i.identificador != j.identificador and i.contexto < j.contexto and i.linea < j.linea:
-                                        errorDeclaracion = True
-                                    elif i.identificador == j.identificador and i.nombreContexto != j.nombreContexto:
-                                        errorDeclaracion = True
-                        else:
-                            errorDeclaracion = True
                                 
                 else:
                     objetosAsignacion.append(IdentificadorA(x, nombreContexto=nombre_contexto, contexto=contador_contexto, linea=contador_lineas))
+
+            
+            if errorDeclaracion != True:
+                if len(objetosId) == 0 and len(objetosAsignacion) != 0:
+                    errorDeclaracion = True
+                elif len(objetosId) != 0 and len(objetosAsignacion) != 0:
+                    contadorV = 0
+                    for i in objetosAsignacion:
+                        for j in objetosId:
+                            if i.identificador == j.identificador:
+                                contadorV += 1
                     
+                    if contadorV == 0:
+                        errorDeclaracion = True
+                    else:
+                        for i in objetosAsignacion:
+                            for j in objetosId:
+                                if i.identificador == j.identificador and i.contexto == j.contexto and i.nombreContexto == j.nombreContexto:
+                                    print('caso1')
+                                    errorDeclaracion = False
+                                    
+                                elif i.identificador == j.identificador and j.contexto < i.contexto and i.nombreContexto != j.nombreContexto:
+                                    print('caso2')
+                                    errorDeclaracion = False
+                                    
+                                else:
+                                    print('caso3')
+                                    errorDeclaracion = True
+                                    
+
+                        
+                                
+                                    
+
 
         #COMPROBANDO ERRORES DE UNICIDAD: EN PROCESO
 
@@ -195,11 +209,11 @@ with open('ReceptorLineas.txt', 'r') as f:
 
     """print(objetosId)
     for x in objetosId:
-        print(x)
-
-    print(objetosAsignacion)
-    for x in objetosAsignacion:
         print(x)"""
+
+    #print(objetosAsignacion)
+    #for x in objetosAsignacion:
+     #   print(x)
     
     
 
