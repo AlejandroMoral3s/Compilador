@@ -113,7 +113,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
 
-        # Creacion de objetos en donde se almacenan los identificadores y que forman parte de declaraciones
+        # Creacion de objetos en donde se almacenan los identificadores y que forman parte de DECLARACIONES
         if Id_y_tipo[0] != '':
             for x in Id_y_tipo[1]:
 
@@ -184,13 +184,10 @@ with open('ReceptorLineas.txt', 'r') as f:
                                     print('caso3')
                                     errorDeclaracion = True
                                     
-
-                        
-                                
-                                    
+                      
 
 
-        #COMPROBANDO ERRORES DE UNICIDAD: EN PROCESO
+        #COMPROBANDO ERRORES DE UNICIDAD Y DECLARACION
 
         if errorUnicidad and errorDeclaracion:
             print("\033[1;31m"+"ERROR DE UNICIDAD Y DECLARACION EN ESTA LINEA\n"+"\033[0m")
