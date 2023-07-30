@@ -262,7 +262,6 @@ with open('ReceptorLineas.txt', 'r') as f:
     else:  
         print("\033[1;31m"+"EXISTEN ERRORES DE CHEQUEO DE TIPOS\n"+"\033[0m")  
 
-
     for x in objetosId:
         print(x)
 
