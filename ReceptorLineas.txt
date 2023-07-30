@@ -1,5 +1,4 @@
 int x;
 suma{
-    int x;
-    x=2;
+    str y;
 }

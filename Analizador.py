@@ -203,12 +203,13 @@ with open('ReceptorLineas.txt', 'r') as f:
         elif errorDeclaracion and not(errorUnicidad):
             print("\033[1;31m"+"ERROR DE DECLARACION EN ESTA LINEA\n"+"\033[0m")
         else:
-            print("\033[1;32m"+"SIN ERRORES!\n"+"\033[0m")
+            print("\033[1;32m"+"SIN ERRORES DE UNICIDAD Y DECLARACION!\n"+"\033[0m")
 
 
         print("\033[35m"+'=================================================================================================================='+"\033[0m")
 
         contador_lineas+=1
+
 
     asignar_nuevos_valores(
         objetosId, 
@@ -220,12 +221,47 @@ with open('ReceptorLineas.txt', 'r') as f:
         almacen_numeroContextos
         )
 
-    """print(almacen_ids_asignacion)
-    print(almacen_valores_asignacion)
-    print(almacen_tipo_valores)
-    print(almacen_dimensiones)
-    print(almacen_nombreContextos)
-    print(almacen_numeroContextos)"""
+    print("\033[33m"+f"\n[OTROS POSIBLES ERRORES EN ANALISIS SEMANTICO: ] \n"+"\033[0m")
+
+    errorChequeoTipos = 0
+    advertenciaInicializacion = 0
+
+    for x in objetosId:
+
+        if x.tipo == 'entero' and x.valor == 'null':
+            advertenciaInicializacion +=1
+            x.valor = '0'
+            x.tipoValor = 'entero'
+            x.dimension = '0'
+        elif x.tipo == 'doble' and x.valor == 'null':
+            advertenciaInicializacion +=1
+            x.valor = '0.0'
+            x.tipoValor = 'doble'
+            x.dimension = '0.0'
+        elif x.tipo == 'cadena' and x.valor == 'null':
+            advertenciaInicializacion +=1
+            x.valor = ''
+            x.tipoValor = 'cadena'
+            x.dimension = '0'
+        elif x.tipo == 'caracter' and x.valor == 'null':
+            advertenciaInicializacion +=1
+            x.valor = ''
+            x.tipoValor = 'caracter'
+            x.dimension = '0'
+            
+
+        if x.tipo != x.tipoValor:
+            errorChequeoTipos+=1
+
+
+    if errorChequeoTipos == 0:
+        if advertenciaInicializacion != 0:
+            print("\033[1;32m"+f"[ADVERTENCIA]: Se inicializaron automaticamente [ {advertenciaInicializacion} ] variables.\n"+"\033[0m")
+        print("\033[1;32m"+"SIN ERRORES DE CHEQUEO DE TIPO!\n"+"\033[0m")
+    
+    else:  
+        print("\033[1;31m"+"EXISTEN ERRORES DE CHEQUEO DE TIPOS\n"+"\033[0m")  
+
 
     for x in objetosId:
         print(x)
