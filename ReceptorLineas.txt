@@ -1,7 +1,7 @@
 suma{
     int x;
 }
-int y;
 resta{
-    y=3;
+    int x;
 }
+int x;

@@ -4,7 +4,6 @@ from objetoIdentificador import *
 from objetoIdAsignacion import *
 
 
-
 #metodo para juntar cada separacion con su correspondiente identificacion lexica
 
 def juntar_listas(lista_separada, lista_identificada):
