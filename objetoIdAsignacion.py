@@ -1,12 +1,11 @@
 class IdentificadorA:
 
-    def __init__(self, identificador, nombreContexto = 'principal', contexto = 0, linea = 1):
+    def __init__(self, identificador, nombreContexto = 'principal', contexto = 0):
         
 
         self.__identificador = identificador
         self.__nombreContexto = nombreContexto
         self.__contexto = contexto
-        self.__linea = linea
 
     @property
     def identificador(self):
@@ -32,13 +31,5 @@ class IdentificadorA:
     def contexto(self, contexto):
         self.__contexto = contexto
 
-    @property
-    def linea(self):
-        return self.__linea
-    
-    @linea.setter
-    def linea(self, linea):
-        self.__linea = linea
-
     def __str__(self):
-        return f'OBJETO ASIGNACION:  Identificador [ {self.__identificador} ]  NombreContexto [ {self.__nombreContexto} ]  Contexto [ {self.__contexto} ]  NoLinea [ {self.__linea} ]'
+        return f'OBJETO ASIGNACION:  Identificador [ {self.__identificador} ]  NombreContexto [ {self.__nombreContexto} ]  Contexto [ {self.__contexto} ]'

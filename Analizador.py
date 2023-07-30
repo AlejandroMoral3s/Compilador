@@ -18,7 +18,6 @@ def juntar_listas(lista_separada, lista_identificada):
 
 #ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
 objetosId = []
-
 objetosAsignacion = []
 
 #ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
@@ -26,6 +25,8 @@ almacen_ids_asignacion = []
 almacen_valores_asignacion = []
 almacen_tipo_valores = []
 almacen_dimensiones = []
+almacen_nombreContextos = []
+almacen_numeroContextos = []
 
 #ABRIENDO ARCHIVO PARA EL ANALISIS
 with open('ReceptorLineas.txt', 'r') as f:
@@ -111,7 +112,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         # Extrayendo identificadores y valores encontradas en ASIGNACIONES
 
-        Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada)
+        Id_y_valor = extraer_valor_de_variables(lista_separada, lista_identificada, nombre_contexto, contador_contexto)
 
         # Creacion de objetos en donde se almacenan los identificadores y que forman parte de DECLARACIONES
         if Id_y_tipo[0] != '':
@@ -144,17 +145,17 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #Distribuyendo en arrays por aparte cada atributo de los identificadores de asignacion
         
-        if len(Id_y_valor) != 0:
+        if len(Id_y_valor[0]) != 0:
 
             #Creacion de objetos corespondientes a los identificadores encontrados en ASIGNACIONES
-            for x in Id_y_valor:
+            for x in Id_y_valor[0]:
 
                 if contador_contexto == 0:
-                    objetosAsignacion.append(IdentificadorA(x, contexto=contador_contexto, linea=contador_lineas))
+                    objetosAsignacion.append(IdentificadorA(x, contexto=contador_contexto))
                     nombre_contexto = 'principal'
                                 
                 else:
-                    objetosAsignacion.append(IdentificadorA(x, nombreContexto=nombre_contexto, contexto=contador_contexto, linea=contador_lineas))
+                    objetosAsignacion.append(IdentificadorA(x, nombreContexto=nombre_contexto, contexto=contador_contexto))
 
             
             if errorDeclaracion != True:
@@ -173,18 +174,24 @@ with open('ReceptorLineas.txt', 'r') as f:
                         for i in objetosAsignacion:
                             for j in objetosId:
                                 if i.identificador == j.identificador and i.contexto == j.contexto and i.nombreContexto == j.nombreContexto:
-                                    print('caso1')
                                     errorDeclaracion = False
                                     
                                 elif i.identificador == j.identificador and j.contexto < i.contexto and i.nombreContexto != j.nombreContexto:
-                                    print('caso2')
                                     errorDeclaracion = False
                                     
                                 else:
-                                    print('caso3')
                                     errorDeclaracion = True
                                     
                       
+        #COLOCANDO ATRIBUTOS DE CADA VARIABLE ENCONTRADA EN ASIGNACION DENTRO DE SUS RESPECTIVOS ARRAYS
+
+        for i in range(0, len(Id_y_valor[0])):
+            almacen_ids_asignacion.append(Id_y_valor[0][i])
+            almacen_valores_asignacion.append(Id_y_valor[1][i])
+            almacen_tipo_valores.append(Id_y_valor[2][i])
+            almacen_dimensiones.append(Id_y_valor[3][i])
+            almacen_nombreContextos.append(Id_y_valor[4][i])
+            almacen_numeroContextos.append(Id_y_valor[5][i])
 
 
         #COMPROBANDO ERRORES DE UNICIDAD Y DECLARACION
@@ -203,13 +210,27 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         contador_lineas+=1
 
-    """print(objetosId)
-    for x in objetosId:
-        print(x)"""
+    asignar_nuevos_valores(
+        objetosId, 
+        almacen_ids_asignacion, 
+        almacen_valores_asignacion, 
+        almacen_tipo_valores,
+        almacen_dimensiones,
+        almacen_nombreContextos,
+        almacen_numeroContextos
+        )
 
-    #print(objetosAsignacion)
-    #for x in objetosAsignacion:
-     #   print(x)
+    """print(almacen_ids_asignacion)
+    print(almacen_valores_asignacion)
+    print(almacen_tipo_valores)
+    print(almacen_dimensiones)
+    print(almacen_nombreContextos)
+    print(almacen_numeroContextos)"""
+
+    for x in objetosId:
+        print(x)
+
+    
     
     
 

@@ -138,9 +138,14 @@ def comprobacionUnicidad(objetosId, objetoVolatil):
 
 
 
-def extraer_valor_de_variables(lista_separada, lista_identificada):
+def extraer_valor_de_variables(lista_separada, lista_identificada, nombreContexto, noContexto):
 
     variables_encontradas = []
+    valor_correspondiente = []
+    tipo_valor = []
+    dimensiones = []
+    nombreContextos = []
+    numeroContextos = []
 
     if len(lista_identificada) >= 3:
 
@@ -148,6 +153,18 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
 
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and lista_identificada[x+2] == 'Numero':
                 variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(lista_separada[x+2])
+
+                if '.' in lista_separada[x+2]:
+                    tipo_valor.append('doble')
+                else:
+                    tipo_valor.append('entero')
+
+                dimensiones.append(lista_separada[x+2])
+                nombreContextos.append(nombreContexto)
+                numeroContextos.append(noContexto)
+
+                
 
     if len(lista_identificada) >= 5:
 
@@ -155,20 +172,36 @@ def extraer_valor_de_variables(lista_separada, lista_identificada):
             
             if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Numero' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
                 variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(str(lista_separada[x+3]))
+                tipo_valor.append('cadena')
+                dimensiones.append(str(len(lista_separada[x+3])))
+                nombreContextos.append(nombreContexto)
+                numeroContextos.append(noContexto)
             
             elif lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'asignacion' and (lista_identificada[x+2] == 'comillas' or lista_identificada[x+2] == 'apostrofe') and lista_identificada[x+3] == 'Identificador' and (lista_identificada[x+4] == 'comillas' or lista_identificada[x+4] == 'apostrofe'):
                 variables_encontradas.append(lista_separada[x])
+                valor_correspondiente.append(str(lista_separada[x+3]))
+
+                if len(lista_separada[x+3]) > 1:
+                    tipo_valor.append("cadena")
+                else:
+                    tipo_valor.append('caracter')
+
+                dimensiones.append(str(len(lista_separada[x+3])))
+                nombreContextos.append(nombreContexto)
+                numeroContextos.append(noContexto)
                 
-    return variables_encontradas
+                
+    return [variables_encontradas, valor_correspondiente, tipo_valor, dimensiones, nombreContextos, numeroContextos]
 
 
 #PROBLEMA AL ASIGNAR VALORES EN DIFERENTES CONTEXTOS Y MISMOS IDENTIFICADORES
 
-def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids, lista_tipoValor, lista_dimensiones):
+def asignar_nuevos_valores (lista_objetos, lista_ids_asignados, lista_valores_ids, lista_tipoValor, lista_dimensiones, lista_nombreContextos, lista_noContextos):
 
     for i in range(0, len(lista_objetos)):
         for j in range(0, len(lista_ids_asignados)):
-            if lista_objetos[i].identificador == lista_ids_asignados[j]:
+            if lista_objetos[i].identificador == lista_ids_asignados[j] and lista_objetos[i].contexto == lista_noContextos[j] and lista_objetos[i].nombreContexto == lista_nombreContextos[j]:
                 lista_objetos[i].valor = lista_valores_ids[j]
                 lista_objetos[i].tipoValor = lista_tipoValor[j]
                 lista_objetos[i].dimension = lista_dimensiones[j]

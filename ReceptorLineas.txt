@@ -1,7 +1,5 @@
+int x;
 suma{
     int x;
+    x=2;
 }
-resta{
-    int x;
-}
-int x;
