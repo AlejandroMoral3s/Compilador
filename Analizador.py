@@ -189,10 +189,6 @@ with open('ReceptorLineas.txt', 'r') as f:
                                     errorDeclaracion = True
                                     
 
-                        
-                                
-                                    
-
 
         #COMPROBANDO ERRORES DE UNICIDAD: EN PROCESO
 
