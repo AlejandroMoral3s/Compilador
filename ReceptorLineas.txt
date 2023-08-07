@@ -1,7 +1,1 @@
-int x;
-suma{
-    int x;
-}
-resta{
-    y=3;
-}
+double y = 2.1;
