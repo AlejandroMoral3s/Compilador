@@ -193,8 +193,8 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         if errorUnicidad and errorDeclaracion:
             print("\033[1;31m"+"ERROR DE UNICIDAD Y DECLARACION EN ESTA LINEA\n"+"\033[0m")
-        #elif errorUnicidad and not(errorDeclaracion):
-            #print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
+        elif errorUnicidad and not(errorDeclaracion):
+            print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
         elif errorDeclaracion and not(errorUnicidad):
             print("\033[1;31m"+"ERROR DE DECLARACION EN ESTA LINEA\n"+"\033[0m")
         else:
