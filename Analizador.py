@@ -22,8 +22,6 @@ with open('ReceptorLineas.txt', 'r') as f:
     contador = 1
     for linea in lineas:
         
-
-
         """--------------------------------- ANALISIS LEXICO ------------------------------------------------------- """
 
 
