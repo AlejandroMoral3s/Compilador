@@ -18,7 +18,6 @@ def juntar_listas(lista_separada, lista_identificada):
 
 #ALMACEN DE OBJETOS IDENTIFICADORES PARA DECLARACIONES
 objetosId = []
-
 objetosAsignacion = []
 
 #ALMACEN PARA IDENTIFICADORES Y VALORES ENCONTRADOS EN ASIGNACION
@@ -198,8 +197,8 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         if errorUnicidad and errorDeclaracion:
             print("\033[1;31m"+"ERROR DE UNICIDAD Y DECLARACION EN ESTA LINEA\n"+"\033[0m")
-        elif errorUnicidad and not(errorDeclaracion):
-            print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
+        #elif errorUnicidad and not(errorDeclaracion):
+            #print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
         elif errorDeclaracion and not(errorUnicidad):
             print("\033[1;31m"+"ERROR DE DECLARACION EN ESTA LINEA\n"+"\033[0m")
         else:
@@ -210,9 +209,9 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         contador_lineas+=1
 
-    """print(objetosId)
+    print(objetosId)
     for x in objetosId:
-        print(x)"""
+        print(x)
 
     #print(objetosAsignacion)
     #for x in objetosAsignacion:

@@ -126,6 +126,8 @@ def extraer_identificadores_declaraciones(lista_separada, lista_identificada):
 
     return [tipo, identificadores]
 
+
+
 def comprobacionUnicidad(objetosId, objetoVolatil):
     errorUnicidad = False
 
