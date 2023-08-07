@@ -75,6 +75,10 @@ with open('ReceptorLineas.txt', 'r') as f:
                 nombre_contexto = lista_separada[x]
                 contador_contexto+=1
             elif lista_identificada[x] == "llave cerrada":
+                for i in range(0, len(objetosId)):
+                    if objetosId[i].contexto == 1:
+                        objetosId.pop(i)
+
                 contador_contexto-=1
 
 
