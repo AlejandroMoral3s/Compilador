@@ -49,12 +49,7 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         for elemento in range(0,len(Listado_Reglas_Sintacticas)):
             if (string_sintactico == Listado_Reglas_Sintacticas[elemento]):
-                existeRegla = True
-
-        if (existeRegla==True):
-            print("Proceso SINTACTICO finalizado sin ningun error!\n")
-        else:
-            print(f"Se encontraron errores sintacticos en la linea [ {contador_lineas} ], por favor verificar.\n")        
+                existeRegla = True       
 
 
         """-------------------------------------------------------------------------------------------------------------- """
@@ -62,6 +57,8 @@ with open('ReceptorLineas.txt', 'r') as f:
         """-------------------------------------------------------------------------------------------------------------- """
     
         
+
+
 
         contador_lineas+=1
 
