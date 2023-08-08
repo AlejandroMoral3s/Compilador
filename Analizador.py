@@ -62,6 +62,10 @@ with open('ReceptorLineas.txt', 'r') as f:
         """------------------------------------------ ANALISIS SEMANTICO ------------------------------------------------ """
         """-------------------------------------------------------------------------------------------------------------- """
     
+        # PROCESO EXCLUSIVO PARA DECLARACIONES DE VARIABLES Y ASIGNACION DE LAS MISMAS CON SUS RESPECTIVOS VALORES INICIALES
+        
+        #------------------------------------------------------------------------------------------------------------------
+        
         extraccionVariablesDecPosi = 0
         variableDeclaradaLineaActual = extraer_declaracion_variables(string_sintactico, lista_separada)
 
@@ -86,6 +90,8 @@ with open('ReceptorLineas.txt', 'r') as f:
         for x in objetosVariableDeclaracion:
             if x.numeroContexto == 0:
                 x.nombreContexto = 'principal'
+
+        #------------------------------------------------------------------------------------------------------------------
 
         contador_lineas+=1
 
