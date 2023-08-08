@@ -76,6 +76,11 @@ with open('ReceptorLineas.txt', 'r') as f:
                 nombre_contexto = lista_separada[x]
                 contador_contexto+=1
             elif lista_identificada[x] == "llave cerrada":
+
+                """for i in range(0, len(objetosId)):
+                    if objetosId[i].contexto == 1:
+                        objetosId.pop(i)"""
+
                 contador_contexto-=1
 
 
@@ -198,8 +203,8 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         if errorUnicidad and errorDeclaracion:
             print("\033[1;31m"+"ERROR DE UNICIDAD Y DECLARACION EN ESTA LINEA\n"+"\033[0m")
-        #elif errorUnicidad and not(errorDeclaracion):
-            #print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
+        elif errorUnicidad and not(errorDeclaracion):
+            print("\033[1;31m"+"ERROR DE UNICIDAD EN ESTA LINEA\n"+"\033[0m")
         elif errorDeclaracion and not(errorUnicidad):
             print("\033[1;31m"+"ERROR DE DECLARACION EN ESTA LINEA\n"+"\033[0m")
         else:
@@ -248,9 +253,21 @@ with open('ReceptorLineas.txt', 'r') as f:
             x.valor = ''
             x.tipoValor = 'caracter'
             x.dimension = '0'
+        """elif x.tipo == 'entero' and x.tipoValor == 'doble':
+            valorTransformado = ''
+            for letra in x.valor:
+                if letra == '.':
+                    break
+                valorTransformado +=letra
+
+            x.valor = valorTransformado
+            valorTransformado = ''"""
+        
+            
             
 
-        if x.tipo != x.tipoValor:
+        if x.tipo != x.tipoValor :
+            #if x.tipo != 'entero' and x.tipoValor != 'doble':
             errorChequeoTipos+=1
 
 

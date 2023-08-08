@@ -10,6 +10,7 @@ def expresar_cadena_lexica_identificada(lista):
 Listado_Reglas_Sintacticas = [
 
     'entero Identificador punto y coma',
+    'doble Identificador punto y coma',
     'entero Identificador asignacion Numero punto y coma'
 
 ]
