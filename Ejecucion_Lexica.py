@@ -108,5 +108,13 @@ def identificar_tokens_lexicos(lista_ingresada):
 
     return lista_volatil
 
-
+#metodo para juntar cada separacion con su correspondiente identificacion lexica
+def juntar_listas(lista_separada, lista_identificada):
+    lista_vacia = []
+    for x in range(0,len(lista_separada)):
+        lista_vacia.append([])
+        lista_vacia[x].append(lista_separada[x])
+        lista_vacia[x].append(lista_identificada[x])
+    
+    return lista_vacia
     
