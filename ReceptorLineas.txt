@@ -1,2 +1,5 @@
-int x = 2;
-double y = 3;
+int x = 2.1;
+suma{
+    double y = 3;
+}
+str z = "hola";

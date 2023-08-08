@@ -49,7 +49,7 @@ def extraer_declaracion_variables(string_sintactico, lista_separada):
 
         tipoDeclaracion = lista_separada[0]
         variable = lista_separada[1]
-        valor = 0
+        valor = '0'
         tipoValor = lista_separada[0]
 
     elif esDecNum:

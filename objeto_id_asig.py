@@ -1,7 +1,9 @@
 class Identificador:
 
-    def __init__(self, identificador, numeroContexto, linea, nombreContexto = 'principal', tipoDec = 'null', tipoAsig = 'null'):
+    def __init__(self, identificador, valor, numeroContexto, linea, nombreContexto = 'principal', tipoDec = 'null', tipoAsig = 'null'):
+        
         self.__identificador = identificador
+        self.__valor = valor
         self.__tipoDec = tipoDec
         self.__tipoAsig = tipoAsig
         self.__numeroContexto = numeroContexto
@@ -15,6 +17,14 @@ class Identificador:
     @identificador.setter
     def identificador(self, identificador):
         self.__identificador = identificador
+
+    @property
+    def valor(self):
+        return self.__valor
+    
+    @valor.setter
+    def valor(self, valor):
+        self.__valor = valor
 
     @property
     def tipoDec(self):
@@ -57,5 +67,5 @@ class Identificador:
         self.__linea = linea
 
     def __str__(self):
-        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ]  TipoDec [ {self.__tipoDec} ] TipoAsig [ {self.__Asig} ]  Contexto [ {self.__contexto} ] Linea [ {self.__linea} ]"
+        return f"IDENTIFICADOR :  Identificador [ {self.__identificador} ] Valor [ {self.__valor} ] TipoDec [ {self.__tipoDec} ] TipoAsig [ {self.__tipoAsig} ]  No.Contexto [ {self.__numeroContexto} ] NombreContexto [ {self.__nombreContexto} ] Linea [ {self.__linea} ]"
 
