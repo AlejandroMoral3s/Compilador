@@ -1,6 +1,6 @@
 from Ejecucion_Lexica import *
 from Proceso_Sintactico import *
-from objetoIdentificador import *
+from objeto_id_asig import *
 
 #ABRIENDO ARCHIVO PARA EL ANALISIS
 with open('ReceptorLineas.txt', 'r') as f:
@@ -10,9 +10,8 @@ with open('ReceptorLineas.txt', 'r') as f:
 
     contador_lineas = 1
     contador_contexto = 0
-    contador_idContexto = 0
 
-    
+
     #Comenzando el analisis por linea individual
 
     for linea in lineas:
@@ -29,12 +28,13 @@ with open('ReceptorLineas.txt', 'r') as f:
         listas_juntas = juntar_listas(lista_separada, lista_identificada)
 
 
-        #MODIFICANDO EL CONTADOR CONTEXTO 
+        """Si se encuentra una apertura de metodo y un cierre del mismo, se procede a aumentar o disminuir contador de
+        contextos"""
 
-        for x in lista_identificada:
-            if x == "llave abierta":
+        for x in range(0, len(lista_identificada)):
+            if lista_identificada[x] == 'Identificador' and lista_identificada[x+1] == 'llave abierta' :
                 contador_contexto+=1
-            elif x == "llave cerrada":
+            elif lista_identificada[x] == "llave cerrada":
                 contador_contexto-=1
 
 
@@ -61,7 +61,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         """------------------------------------------ ANALISIS SEMANTICO ------------------------------------------------ """
         """-------------------------------------------------------------------------------------------------------------- """
     
-
+        
 
         contador_lineas+=1
 
