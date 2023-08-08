@@ -51,8 +51,6 @@ with open('ReceptorLineas.txt', 'r') as f:
         string_sintactico = expresar_cadena_lexica_identificada(lista_identificada) #String con elementos identificados
         existeRegla = False
 
-        print(string_sintactico)
-
         for elemento in range(0,len(Listado_Reglas_Sintacticas)):
             if (string_sintactico == Listado_Reglas_Sintacticas[elemento]):
                 existeRegla = True       
@@ -67,7 +65,7 @@ with open('ReceptorLineas.txt', 'r') as f:
         #------------------------------------------------------------------------------------------------------------------
         
         extraccionVariablesDecPosi = 0
-        variableDeclaradaLineaActual = extraer_declaracion_variables(string_sintactico, lista_separada)
+        variableDeclaradaLineaActual = extraer_declaracion_variables(string_sintactico, lista_identificada, lista_separada)
 
         #verificando que se hayan obtenido correctamente los atributos en la declaracion
         for x in variableDeclaradaLineaActual:
@@ -85,13 +83,15 @@ with open('ReceptorLineas.txt', 'r') as f:
                 variableDeclaradaLineaActual[0],
                 variableDeclaradaLineaActual[3]
             ))
-        
+               
         #Asegurando que en todos los objetos en contexto cero se coloque el nombre PRINCIPAL
         for x in objetosVariableDeclaracion:
             if x.numeroContexto == 0:
                 x.nombreContexto = 'principal'
 
         #------------------------------------------------------------------------------------------------------------------
+
+
 
         contador_lineas+=1
 

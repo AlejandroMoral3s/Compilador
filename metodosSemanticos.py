@@ -1,4 +1,4 @@
-def extraer_declaracion_variables(string_sintactico, lista_separada):
+def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_separada):
 
     esDecNumSinVal = False
     esDecNum = False
@@ -23,8 +23,8 @@ def extraer_declaracion_variables(string_sintactico, lista_separada):
         'caracter Identificador punto y coma'
     ]
     decLet = [
-        'cadena Identificador asignacion comillas Identificador comillas punto y coma',
-        'cadena Identificador asignacion comillas Numero comillas punto y coma',
+        'cadena Identificador asignacion apostrofe Identificador apostrofe punto y coma',
+        'cadena Identificador asignacion apostrofe Numero apostrofe punto y coma',
         'caracter Identificador asignacion apostrofe Identificador apostrofe punto y coma',
     ]
 
@@ -47,14 +47,14 @@ def extraer_declaracion_variables(string_sintactico, lista_separada):
 
     if esDecNumSinVal:
 
-        tipoDeclaracion = lista_separada[0]
+        tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         valor = '0'
-        tipoValor = lista_separada[0]
+        tipoValor = lista_identificada[0]
 
     elif esDecNum:
 
-        tipoDeclaracion = lista_separada[0]
+        tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         
         if '.' in lista_separada[3]:
@@ -66,20 +66,23 @@ def extraer_declaracion_variables(string_sintactico, lista_separada):
 
     elif esDecLetSinVal:
 
-        tipoDeclaracion = lista_separada[0]
+        tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
-        tipoValor = lista_separada[0]
+        tipoValor = lista_identificada[0]
 
     elif esDecLet:
 
-        tipoDeclaracion = lista_separada[0]
+        tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         valor = lista_separada[4]
 
-        if len(lista_separada[4])>1:
+        if len(valor)>1:
             tipoValor = 'cadena'
-        elif len(lista_separada) == 1:
+        elif len(valor) == 1:
             tipoValor = 'caracter'
 
     return [tipoDeclaracion, variable, valor, tipoValor]
     
+
+def extraer_asignacion_variables(string_sintactico, lista_identificada, lista_separada):
+    pass

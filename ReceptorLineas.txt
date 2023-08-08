@@ -1,5 +1,5 @@
-int x;
+int x = a;
 suma{
     double y = 3;
 }
-str z = "hola";
+str z = 'ho';
