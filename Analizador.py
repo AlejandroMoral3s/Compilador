@@ -87,14 +87,28 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #------------------------------------------------------------------------------------------------------------------
 
-        declaValidasContexActual = []
-
         currStringAsig = extraer_asignacion_variables(string_sintactico, lista_separada)
         
         if currStringAsig != 0:
-            objAsignacionVolatil = Asignador(
+            objCurrAsig = Asignador(
                 currStringAsig[1], currStringAsig[2], contador_contexto, nombre_contexto, currStringAsig[3])
-            objetosVariableAsignacion.append(objAsignacionVolatil)
+            objetosVariableAsignacion.append(objCurrAsig)
+
+            for x in objetosVariableAsignacion:
+                if x.numeroContexto == 0:
+                    x.nombreContexto = 'principal'
+
+            for x in objetosVariableDeclaracion:
+                if ((x.identificador == objCurrAsig.identificador) and (x.nombreContexto == objCurrAsig.nombreContexto) and (currStringAsig[0] == '')):
+                    x.valor = objCurrAsig.valor
+                    x.tipoAsig = objCurrAsig.tipoAsig
+
+                elif((x.identificador == objCurrAsig.identificador) and (x.nombreContexto == 'principal') and (currStringAsig[0] == '0')):
+                    
+                    x.valor = objCurrAsig.valor
+                    x.tipoAsig = objCurrAsig.tipoAsig
+            
+            
 
         contador_lineas+=1
 
