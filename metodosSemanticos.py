@@ -30,6 +30,13 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
         'caracter Identificador asignacion apostrofe Identificador apostrofe punto y coma',
     ]
 
+    decVarVar = [
+        'entero Identificador asignacion Identificador punto y coma',
+        'doble Identificador asignacion Identificador punto y coma',
+        'cadena Identificador asignacion Identificador punto y coma',
+        'caracter Identificador asignacion Identificador punto y coma',
+    ]
+
     for x in decNumSinVal:
         if x == string_sintactico:
             esDecNumSinVal = True
