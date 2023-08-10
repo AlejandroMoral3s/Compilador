@@ -1,3 +1,8 @@
-int z = 1;
-int x = 2.1;
-int y = z;
+int x =2;
+a{
+    int b;
+}
+int b;
+a2{
+    int b=this.x;
+}

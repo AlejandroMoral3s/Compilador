@@ -111,15 +111,16 @@ with open('ReceptorLineas.txt', 'r') as f:
                     if (y.identificador == objCurrDec.valor) and (y.nombreContexto == 'principal'):
                         objCurrDec.valor = y.valor
                         objCurrDec.tipoAsig = y.tipoAsig
-                    elif (y.identificador == objCurrDec.valor) and (y.nombreContexto == 'principal'):
+                    elif (y.identificador != objCurrDec.valor) and (y.nombreContexto == 'principal'):
                         continue
-                    else:
-                        print('ERROR DE DECLARACION, LA VARIABLE AUN NO SE HA DECLARADO.')
-                        #cortando ejecucion de programa abruptamente
-                        break
 
-            #luego se almacena la variable 
-            objetosVariableDeclaracion.append(objCurrDec)
+            if (objCurrDec.tipoAsig == 'VarVar') or (objCurrDec.tipoAsig == 'VarVarClass'):
+                print('ERROR DE DECLARACION, LA VARIABLE AUN NO SE HA DECLARADO.')
+                #cortando ejecucion de programa abruptamente
+                break
+            else:
+                #luego se almacena la variable 
+                objetosVariableDeclaracion.append(objCurrDec)
 
         #Asegurando que en todos los objetos en contexto cero se coloque el nombre PRINCIPAL
         for x in objetosVariableDeclaracion:
