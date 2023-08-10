@@ -1,4 +1,13 @@
-int x;
-int y;
-y = x;
-y = 3;
+int x = 2;
+a{
+    int b;
+}
+int b;
+int z;
+a2{
+    this.b=x;
+}
+a3{
+    int j = 12;
+    this.z = j;
+}
