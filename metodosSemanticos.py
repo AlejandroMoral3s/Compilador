@@ -149,6 +149,9 @@ def extraer_asignacion_variables(string_sintactico, lista_separada):
     asigCharac = 'Identificador asignacion apostrofe Identificador apostrofe punto y coma'
     asigCharacClass = 'llamadoClase Identificador asignacion comillas Identificador comillas punto y coma'
 
+    asigVarVar = 'Identificador asignacion Identificador punto y coma'
+    asigVarVarClass = 'llamadoClase Identificador asignacion Identificador punto y coma'
+
     if string_sintactico == asigNumber:
         
         existeAsignacion = True
@@ -199,6 +202,21 @@ def extraer_asignacion_variables(string_sintactico, lista_separada):
         variable = lista_separada[1]
         value = lista_separada[4][0]
         valueType = 'cadena'
+
+    elif string_sintactico == asigVarVar:
+
+        existeAsignacion = True
+        variable = lista_separada[0]
+        value = lista_separada[2]
+        valueType = 'VarVar'
+
+    elif string_sintactico == asigVarVarClass:
+
+        environ = '0'
+        existeAsignacion = True
+        variable = lista_separada[1]
+        value = lista_separada[3]
+        valueType = 'VarVarClass'
 
     if existeAsignacion:
         return [environ, variable, value, valueType]

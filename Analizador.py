@@ -126,12 +126,14 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #------------------------------------------------------------------------------------------------------------------
         #------------------------------------------------------------------------------------------------------------------
-        
+
         #metodo que permite extraer los atributos de la variable a la cual se busca realizar una asignacion
         currStringAsig = extraer_asignacion_variables(string_sintactico, lista_separada) # [entorno, variable, valor, tipoValor]
         
         #Contador que permite saber si hay errores de declaracion
         contadorCoincidencias = 0
+        esTipoAsignacionVarVar = False
+        esTipoAsigVarVarClass = False
 
         if currStringAsig != 0:
             #Instanciando objeto asignador para la variable en linea actual
@@ -145,24 +147,44 @@ with open('ReceptorLineas.txt', 'r') as f:
                 if x.numeroContexto == 0:
                     x.nombreContexto = 'principal'
 
-
             for x in objetosVariableDeclaracion:
                 #comparando que la asignacion actual y algun objeto de la lista de Declaraciones, tengan mismo nombre, mismo nombre de contexto y un entorno diferente de 0
                 if ((x.identificador == objCurrAsig.identificador) and (x.nombreContexto == objCurrAsig.nombreContexto) and (currStringAsig[0] == '')):
-                    
+                        
                     contadorCoincidencias += 1
                     x.valor = objCurrAsig.valor
                     x.tipoAsig = objCurrAsig.tipoAsig
 
+                    if objCurrAsig.tipoAsig == "VarVar":
+                        for i in objetosVariableDeclaracion:
+                            if i.identificador == objCurrAsig.valor:
+                                x.valor = i.valor
+                                x.tipoAsig = i.tipoAsig
+
                 #Comparando que se tenga mismo nombre, que el contexto sea 'principal' y que el entorno sea 0
                 elif((x.identificador == objCurrAsig.identificador) and (x.nombreContexto == 'principal') and (currStringAsig[0] == '0')):
-                    
+                        
                     contadorCoincidencias += 1
                     x.valor = objCurrAsig.valor
                     x.tipoAsig = objCurrAsig.tipoAsig
             
+                    if objCurrAsig.tipoAsig == "VarVarClass":
+                        for i in objetosVariableDeclaracion:
+                            if i.identificador == objCurrAsig.valor:
+                                x.valor = i.valor
+                                x.tipoAsig = i.tipoAsig
+
+            for x in objetosVariableDeclaracion:
+                if x.tipoAsig == 'VarVar':
+                    esTipoAsignacionVarVar = True
+                    break
+                elif x.tipoAsig == 'VarVarClass':
+                    esTipoAsigVarVarClass = True
+                    break
+
             #Lanzando error de DECLARACION!
-            if contadorCoincidencias == 0:
+            if contadorCoincidencias == 0 or esTipoAsignacionVarVar == True or esTipoAsigVarVarClass == True:
+                
                 print('ERROR DE DECLARACION, LA VARIABLE AUN NO SE HA DECLARADO.')
                 #cortando ejecucion de programa abruptamente
                 break

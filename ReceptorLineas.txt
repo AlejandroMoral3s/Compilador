@@ -1,9 +1,4 @@
-int x =2;
-a{
-    int b;
-}
-int b;
-a2{
-    int x;
-    int b=x;
-}
+int x;
+int y;
+y = x;
+y = 3;
