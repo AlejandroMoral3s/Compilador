@@ -167,6 +167,7 @@ def extraer_asignacion_variables(string_sintactico, lista_separada):
         return [environ, variable, value, valueType]
     else:
         return 0
-    
+
+  
 
     
