@@ -6,6 +6,8 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
     esDecNum = False
     esDecLetSinVal = False
     esDecLet = False
+    esVarVar = False
+    esVarVarClass = False
 
     variable = ''
     tipoDeclaracion = ''
@@ -30,6 +32,20 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
         'caracter Identificador asignacion apostrofe Identificador apostrofe punto y coma',
     ]
 
+    decVarVar = [
+        'entero Identificador asignacion Identificador punto y coma',
+        'doble Identificador asignacion Identificador punto y coma',
+        'cadena Identificador asignacion Identificador punto y coma',
+        'caracter Identificador asignacion Identificador punto y coma'
+    ]
+
+    decVarVarClass = [
+        'entero Identificador asignacion llamadoClase Identificador punto y coma',
+        'doble Identificador asignacion llamadoClase Identificador punto y coma',
+        'cadena Identificador asignacion llamadoClase Identificador punto y coma',
+        'caracter Identificador asignacion llamadoClase Identificador punto y coma'
+    ]
+
     for x in decNumSinVal:
         if x == string_sintactico:
             esDecNumSinVal = True
@@ -46,6 +62,13 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
         if x == string_sintactico:
             esDecLet = True
 
+    for x in decVarVar:
+        if x == string_sintactico:
+            esVarVar = True
+
+    for x in decVarVarClass:
+        if x == string_sintactico:
+            esVarVarClass = True
 
     if esDecNumSinVal:
 
@@ -86,6 +109,20 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
             tipoValor = 'cadena'
         elif len(valor) == 1:
             tipoValor = 'caracter'
+
+    elif esVarVar:
+        declaracionValida = True
+        tipoDeclaracion = lista_identificada[0]
+        variable = lista_separada[1]
+        valor = lista_separada[3]
+        tipoValor = 'VarVar'
+
+    elif esVarVarClass:
+        declaracionValida = True
+        tipoDeclaracion = lista_identificada[0]
+        variable = lista_separada[1]
+        valor = lista_separada[4]
+        tipoValor = 'VarVarClass'
 
 
     if declaracionValida:
