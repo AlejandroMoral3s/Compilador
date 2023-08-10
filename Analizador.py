@@ -64,7 +64,8 @@ with open('ReceptorLineas.txt', 'r') as f:
         # PROCESO EXCLUSIVO PARA DECLARACIONES DE VARIABLES Y ASIGNACION DE LAS MISMAS CON SUS RESPECTIVOS VALORES INICIALES
         
         #------------------------------------------------------------------------------------------------------------------
-        
+        #------------------------------------------------------------------------------------------------------------------
+
         #variable lista, que almacena los atributos de la variable actual declarada
         variableDeclaradaLineaActual = extraer_declaracion_variables(string_sintactico, lista_identificada, lista_separada)
 
@@ -93,7 +94,7 @@ with open('ReceptorLineas.txt', 'r') as f:
                 print('ERROR DE UNICIDAD, LA VARIABLE YA SE HA DECLARADO ANTES.')
                 break
             
-            #EN PROCESO
+            #DECLARACION DE VARIABLES CON CONTENIDO DE OTRAS VARIABLES
             if objCurrDec.tipoAsig == 'VarVar':
                 for y in objetosVariableDeclaracion:
                     if (y.identificador == objCurrDec.valor) and (y.nombreContexto == objCurrDec.nombreContexto):
@@ -101,10 +102,6 @@ with open('ReceptorLineas.txt', 'r') as f:
                         objCurrDec.tipoAsig = y.tipoAsig
                     elif (y.identificador != objCurrDec.valor) and (y.nombreContexto == objCurrDec.nombreContexto):
                         continue
-                    else:                        
-                        print('ERROR DE DECLARACION, LA VARIABLE AUN NO SE HA DECLARADO.')
-                        #cortando ejecucion de programa abruptamente
-                        break
 
             elif objCurrDec.tipoAsig == 'VarVarClass':
                 for y in objetosVariableDeclaracion:
@@ -128,7 +125,8 @@ with open('ReceptorLineas.txt', 'r') as f:
                 x.nombreContexto = 'principal'
 
         #------------------------------------------------------------------------------------------------------------------
-
+        #------------------------------------------------------------------------------------------------------------------
+        
         #metodo que permite extraer los atributos de la variable a la cual se busca realizar una asignacion
         currStringAsig = extraer_asignacion_variables(string_sintactico, lista_separada) # [entorno, variable, valor, tipoValor]
         
