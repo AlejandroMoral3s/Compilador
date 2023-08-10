@@ -128,6 +128,12 @@ def separar_por_igual(linea):
     nuevo_string = ' '.join(contenedor)
     return nuevo_string
 
+def separar_por_llamadoClase(linea):
+
+    contenedor = re.split('(this.)', linea)
+    nuevo_string = ' '.join(contenedor)
+    return nuevo_string
+
 """  [ FUNCIONES DE SEPARACION PARA COMENTARIOS DE UNA LINEA  ]"""
 
 def separar_por_slash(linea):

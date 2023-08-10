@@ -1,5 +1,2 @@
-int x = a;
-suma{
-    double y = 3;
-}
-str z = 'ho';
+char x;
+x=3;

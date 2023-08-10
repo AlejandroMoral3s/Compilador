@@ -14,6 +14,7 @@ with open('ReceptorLineas.txt', 'r') as f:
     nombre_contexto = 'principal'
 
     objetosVariableDeclaracion = []
+    objetosVariableAsignacion = []
 
     #Comenzando el analisis por linea individual
 
@@ -64,16 +65,11 @@ with open('ReceptorLineas.txt', 'r') as f:
         
         #------------------------------------------------------------------------------------------------------------------
         
-        extraccionVariablesDecPosi = 0
         variableDeclaradaLineaActual = extraer_declaracion_variables(string_sintactico, lista_identificada, lista_separada)
-
-        #verificando que se hayan obtenido correctamente los atributos en la declaracion
-        for x in variableDeclaradaLineaActual:
-            if x == '':
-                extraccionVariablesDecPosi+=1
         
         #Creando objeto individual de una variable declarada
-        if extraccionVariablesDecPosi != 4:
+
+        if variableDeclaradaLineaActual != 0:
             objetosVariableDeclaracion.append(Identificador(
                 variableDeclaradaLineaActual[1],
                 variableDeclaradaLineaActual[2],
@@ -91,7 +87,14 @@ with open('ReceptorLineas.txt', 'r') as f:
 
         #------------------------------------------------------------------------------------------------------------------
 
+        declaValidasContexActual = []
 
+        currStringAsig = extraer_asignacion_variables(string_sintactico, lista_separada)
+        
+        if currStringAsig != 0:
+            objAsignacionVolatil = Asignador(
+                currStringAsig[1], currStringAsig[2], contador_contexto, nombre_contexto, currStringAsig[3])
+            objetosVariableAsignacion.append(objAsignacionVolatil)
 
         contador_lineas+=1
 

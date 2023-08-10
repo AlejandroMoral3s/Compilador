@@ -1,5 +1,7 @@
 def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_separada):
 
+    declaracionValida = False
+
     esDecNumSinVal = False
     esDecNum = False
     esDecLetSinVal = False
@@ -47,6 +49,7 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
 
     if esDecNumSinVal:
 
+        declaracionValida = True
         tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         valor = '0'
@@ -54,6 +57,7 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
 
     elif esDecNum:
 
+        declaracionValida = True
         tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         
@@ -66,12 +70,14 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
 
     elif esDecLetSinVal:
 
+        declaracionValida = True
         tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         tipoValor = lista_identificada[0]
 
     elif esDecLet:
 
+        declaracionValida = True
         tipoDeclaracion = lista_identificada[0]
         variable = lista_separada[1]
         valor = lista_separada[4]
@@ -81,8 +87,86 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
         elif len(valor) == 1:
             tipoValor = 'caracter'
 
-    return [tipoDeclaracion, variable, valor, tipoValor]
+
+    if declaracionValida:
+        return [tipoDeclaracion, variable, valor, tipoValor]
+    else:
+        return 0
     
 
-def extraer_asignacion_variables(string_sintactico, lista_identificada, lista_separada):
-    pass
+def extraer_asignacion_variables(string_sintactico, lista_separada):
+    
+    existeAsignacion = False
+
+    environ = ''
+    variable = ''
+    value = ''
+    valueType = ''
+
+    asigNumber = 'Identificador asignacion Numero punto y coma'
+    asigNumberClass = 'llamadoClase Identificador asignacion Numero punto y coma'
+    
+    asigString = 'Identificador asignacion comillas Identificador comillas punto y coma'
+    asigStringClass = 'llamadoClase Identificador asignacion comillas Identificador comillas punto y coma'
+
+    asigCharac = 'Identificador asignacion apostrofe Identificador apostrofe punto y coma'
+    asigCharacClass = 'llamadoClase Identificador asignacion comillas Identificador comillas punto y coma'
+
+    if string_sintactico == asigNumber:
+        
+        existeAsignacion = True
+        variable = lista_separada[0]
+        value = lista_separada[2]
+        if '.' in lista_separada[2]:
+            valueType = 'doble'
+        else:
+            valueType = 'entero'
+
+    elif string_sintactico == asigNumberClass:
+        
+        existeAsignacion = True
+        environ = '0'
+        variable = lista_separada[1]
+        value = lista_separada[3]
+        if '.' in lista_separada[3]:
+            valueType = 'doble'
+        else:
+            valueType = 'entero'
+
+    elif string_sintactico == asigString:
+
+        existeAsignacion = True
+        variable = lista_separada[0]
+        value = lista_separada[3]
+        valueType = 'cadena'
+
+    elif string_sintactico == asigStringClass:
+
+        existeAsignacion = True
+        environ = '0'
+        variable = lista_separada[1]
+        value = lista_separada[4]
+        valueType = 'cadena'
+
+    elif string_sintactico == asigCharac:
+
+        existeAsignacion = True
+        variable = lista_separada[0]
+        value = lista_separada[3][0]
+        valueType = 'caracter'
+
+    elif string_sintactico == asigCharacClass:
+
+        existeAsignacion = True
+        environ = '0'
+        variable = lista_separada[1]
+        value = lista_separada[4][0]
+        valueType = 'cadena'
+
+    if existeAsignacion:
+        return [environ, variable, value, valueType]
+    else:
+        return 0
+    
+
+    

@@ -39,6 +39,8 @@ diccionario_general = {
     'char':'caracter',
     'double':'doble',
 
+    'this.':'llamadoClase',
+
     'if':'condicional',
     'for':'inicio_for',
     'while':'inicio_while'

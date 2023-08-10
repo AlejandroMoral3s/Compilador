@@ -62,6 +62,8 @@ def extraer_string_separado(linea):
 
     string_volatil = separar_por_igual(string_volatil)
 
+    string_volatil = separar_por_llamadoClase(string_volatil)
+
     string_volatil = separar_por_slash(string_volatil)
 
     string_volatil = separar_por_espacio(string_volatil)
