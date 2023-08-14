@@ -188,6 +188,8 @@ with open('ReceptorLineas.txt', 'r') as f:
                 print('ERROR DE DECLARACION, LA VARIABLE AUN NO SE HA DECLARADO.')
                 #cortando ejecucion de programa abruptamente
                 break
+        
+
 
         contador_lineas+=1
 
