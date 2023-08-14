@@ -20,16 +20,24 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
     ]
     decNum = [
         'entero Identificador asignacion Numero punto y coma',
-        'doble Identificador asignacion Numero punto y coma'
+        'doble Identificador asignacion Numero punto y coma',
+        'caracter Identificador asignacion Numero punto y coma',
+        'cadena Identificador asignacion Numero punto y coma'
     ]
     decLetSinVal = [
         'cadena Identificador punto y coma',
         'caracter Identificador punto y coma'
     ]
     decLet = [
+        'cadena Identificador asignacion comillas Identificador comillas punto y coma',
+        'cadena Identificador asignacion comillas Numero comillas punto y coma',
         'cadena Identificador asignacion apostrofe Identificador apostrofe punto y coma',
         'cadena Identificador asignacion apostrofe Numero apostrofe punto y coma',
+
         'caracter Identificador asignacion apostrofe Identificador apostrofe punto y coma',
+        'caracter Identificador asignacion apostrofe Numero apostrofe punto y coma',
+        'caracter Identificador asignacion comillas Identificador comillas punto y coma',
+        'caracter Identificador asignacion comillas Numero comillas punto y coma'
     ]
 
     decVarVar = [
@@ -105,9 +113,9 @@ def extraer_declaracion_variables(string_sintactico, lista_identificada, lista_s
         variable = lista_separada[1]
         valor = lista_separada[4]
 
-        if len(valor)>1:
+        if lista_identificada[3] == "comillas":
             tipoValor = 'cadena'
-        elif len(valor) == 1:
+        else:
             tipoValor = 'caracter'
 
     elif esVarVar:
@@ -223,6 +231,54 @@ def extraer_asignacion_variables(string_sintactico, lista_separada):
     else:
         return 0
 
-  
+
+def comparacionTipos(objeto):
+
+    tiposAceptados = False
+    nuevoValor = ''
+    nuevoTipoValor = ''
+
+    if objeto.tipoDec == objeto.tipoAsig:
+        tiposAceptados = True
+        nuevoValor = objeto.valor
+        nuevoTipoValor = objeto.tipoAsig
+
+        if objeto.tipoDec == 'caracter' and objeto.tipoAsig == 'caracter':
+            nuevoValor = objeto.valor[0]
+            nuevoTipoValor = 'caracter'
+
+    elif objeto.tipoDec == 'doble' and objeto.tipoAsig == 'entero':
+
+        tiposAceptados = True
+        nuevoValor = objeto.valor+'.0'
+        nuevoTipoValor = 'doble'
+
+    elif objeto.tipoDec == 'entero' and objeto.tipoAsig == 'doble':
+
+        tiposAceptados = True
+        nuevoValor = ''
+        for x in objeto.valor:
+            if x != '.':
+                nuevoValor += x
+            else:
+                break
+        nuevoTipoValor = 'entero'
+
+    elif objeto.tipoDec == 'cadena' and objeto.tipoAsig == 'caracter':
+        tiposAceptados = True
+        nuevoValor = objeto.valor
+        nuevoTipoValor = 'cadena'
+
+    elif objeto.tipoDec == 'caracter' and objeto.tipoAsig == 'entero':
+        tiposAceptados = True
+        nuevoValor = chr(int(objeto.valor))
+        nuevoTipoValor = objeto.tipoAsig
+
+    else:
+        nuevoValor = objeto.valor
+        nuevoTipoValor = objeto.tipoAsig
+    
+
+    return [tiposAceptados, nuevoValor, nuevoTipoValor]
 
     

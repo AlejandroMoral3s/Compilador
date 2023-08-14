@@ -189,7 +189,18 @@ with open('ReceptorLineas.txt', 'r') as f:
                 #cortando ejecucion de programa abruptamente
                 break
         
+        #------------------------------------------------------------------------------------------------------------------
+        #------------------------------------------------------------------------------------------------------------------
+        
+        tiposCoincidentes = False
+        listaChequeoImplicito = comparacionTipos(objetosVariableDeclaracion[-1])
+        tiposCoincidentes = listaChequeoImplicito[0]
+        objetosVariableDeclaracion[-1].valor = listaChequeoImplicito[1]
+        objetosVariableDeclaracion[-1].tipoAsig = listaChequeoImplicito[2]
 
+        if not(tiposCoincidentes):
+            print('ERROR EN CHEQUEO DE TIPOS')
+            break
 
         contador_lineas+=1
 
