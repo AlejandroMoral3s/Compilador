@@ -272,7 +272,18 @@ def comparacionTipos(objeto):
     elif objeto.tipoDec == 'caracter' and objeto.tipoAsig == 'entero':
         tiposAceptados = True
         nuevoValor = chr(int(objeto.valor))
-        nuevoTipoValor = objeto.tipoAsig
+        nuevoTipoValor = objeto.tipoDec
+
+    elif objeto.tipoDec == 'caracter' and objeto.tipoAsig == 'doble':
+        tiposAceptados = True
+        valorTruncado = ''
+        for x in objeto.valor:
+            if x != '.':
+                valorTruncado += x
+            else:
+                break
+        nuevoValor = chr(int(valorTruncado))
+        nuevoTipoValor = objeto.tipoDec
 
     else:
         nuevoValor = objeto.valor

@@ -191,12 +191,24 @@ with open('ReceptorLineas.txt', 'r') as f:
         
         #------------------------------------------------------------------------------------------------------------------
         #------------------------------------------------------------------------------------------------------------------
-        
+
         tiposCoincidentes = False
         listaChequeoImplicito = comparacionTipos(objetosVariableDeclaracion[-1])
         tiposCoincidentes = listaChequeoImplicito[0]
         objetosVariableDeclaracion[-1].valor = listaChequeoImplicito[1]
         objetosVariableDeclaracion[-1].tipoAsig = listaChequeoImplicito[2]
+
+        for x in objetosVariableDeclaracion:
+            if x.tipoDec == 'caracter' and x.tipoAsig == 'entero':
+                x.valor = chr(int(x.valor))
+            elif x.tipoDec == 'caracter' and x.tipoAsig == 'doble':
+                valorTruncado = ''
+                for letra in x.valor:
+                    if letra != '.': 
+                        valorTruncado+=letra
+                    else:
+                        break
+                x.valor = chr(int(valorTruncado))
 
         if not(tiposCoincidentes):
             print('ERROR EN CHEQUEO DE TIPOS')

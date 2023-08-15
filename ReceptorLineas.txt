@@ -1,2 +1,3 @@
-int x = 101;
-char y = x;
+char a = 'c';
+double x = 64.5;
+x=a;
