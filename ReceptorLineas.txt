@@ -1,5 +1,3 @@
-int x;
-suma{
-    int x;
-    x=2.1;
-}
+char x = 'a';
+double y = 2.1;
+x=y;
